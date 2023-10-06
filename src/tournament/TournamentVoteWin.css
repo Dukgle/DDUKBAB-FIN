@@ -1,0 +1,121 @@
+.votes-win {
+  margin-top: 20px;
+
+  text-align: center;
+}
+
+.votes-win-title {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.votes-win-title p {
+  width: 70px;
+  height: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #43000a;
+
+  text-align: center;
+  border-bottom: solid 1.5px #43000a;
+}
+
+.votes-win-title img {
+  margin: 0 5px 10px 5px;
+}
+
+.votes-things-win-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.votes-thing-box-win {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 50vw;
+  height: 50vw;
+
+  border: solid 1.5px #43000a;
+  border-radius: 5px;
+
+  padding: 0;
+}
+
+@media (hover: hover) {
+  .votes-thing-box-win {
+    width: calc(390px * 0.5);
+    height: calc(390px * 0.5);
+  }
+}
+
+.votes-thing-box-win img {
+  width: 40%;
+  height: auto;
+}
+
+.votes-thing-win {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.votes-thing-win p {
+  margin-top: 10px;
+}
+
+.point-vote-button button {
+  font-size: 16px;
+  font-family: "Pretendard-Regular";
+  background-color: #fccb6f;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  width: 70%;
+  height: 50px;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.point-vote-button-click button {
+  font-size: 16px;
+  font-family: "Pretendard-Regular";
+  background-color: #fccb6f;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  width: 70%;
+  height: 40px;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.vote-modal-container p {
+  margin-top: 30px;
+}
+
+/* 모달 내용의 스타일 */
+.vote-modal-container {
+  /* 모달 내용의 크기를 모달 창에 맞게 설정 */
+  width: 75%; /* 모달 내용의 가로 크기를 화면의 60%로 설정 */
+  max-width: 75%; /* 모달 내용의 최대 가로 크기를 화면의 60%로 설정 */
+  max-height: 80%; /* 모달 내용의 최대 높이를 화면의 60%로 설정 */
+  background-color: white; /* 모달 내용의 배경색 설정 */
+  border: solid 1.5px #43000a; /* 테두리 */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+  padding: 20px; /* 내용과 테두리 간격 설정 */
+  box-sizing: border-box; /* 패딩을 포함한 전체 크기로 설정 */
+  text-align: center;
+}
+
+@media (hover: hover) {
+  .vote-modal-container {
+    width: calc(390px * 0.75);
+    max-width: calc(390px * 0.75);
+  }
+}

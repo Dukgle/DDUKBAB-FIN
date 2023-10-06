@@ -1,0 +1,86 @@
+.vote-title {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  margin-top: 20px;
+
+  font-size: 25px;
+  font-weight: bold;
+  color: #43000a;
+}
+
+.vote-title img {
+  width: 50px;
+  height: 50px;
+}
+
+.vote-title p {
+  width: 60px;
+  text-align: center;
+  margin-left: 5px;
+  border-bottom: solid 1.5px #43000a;
+}
+
+.votes {
+  margin-top: 60px;
+}
+
+.votes-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.votes-things-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.votes-thing-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40vw;
+  height: 40vw;
+
+  border: solid 1.5px #43000a;
+  border-radius: 5px;
+
+  padding: 0;
+}
+
+@media (hover: hover) {
+  .votes-thing-box {
+    width: calc(390px * 0.4);
+    height: calc(390px * 0.4);
+  }
+}
+
+.votes-thing {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.votes-thing p {
+  margin-top: 10px;
+}
+
+.votes-thing-box img {
+  width: 40%;
+  height: auto;
+}
+
+.votes-vs {
+  position: relative;
+  margin: 0 -40px;
+}
+
+.votes-vs img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 20px;
+}

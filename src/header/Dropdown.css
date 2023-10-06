@@ -1,63 +1,59 @@
-@font-face {
-    font-family: "WanjuBold";
-    src: url("../font/완주대둔산체\ Bold.ttf")
-}
-
-
 .dropdown-menu {
-    padding: 0;
-    margin: 0;
-    font-size: medium;
-    font-weight: bolder;
-    color: black;
-    background-color: rgb(252, 203, 111, 0.8); /* 배경색을 원하는 색상으로 설정 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
-    position: relative;
-    top: 0%;
-    width: 130px;
-    right: 800%;
-    z-index: 1000;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #43000a;
+  background-color: rgb(252, 203, 111, 0.85); /* 배경색을 원하는 색상으로 설정 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+  position: relative;
+  top: 0%;
+  width: 130px;
+  right: 800%;
+  z-index: 1000;
+  border-radius: 10px;
+  margin-top: -10px;
+  padding-bottom: 5px;
 }
 
 .dropdown-menu li {
-    padding: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 18px;
-    font-family: 'WanjuBold';
-    font-weight: bolder;
-    text-align: center;
-    list-style: none;
-    border-bottom: 1px solid #000000; /* 아이템 간 구분선 추가 */
-    text-decoration: none;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  list-style: none;
+  border-bottom: 1px solid #43000a; /* 아이템 간 구분선 추가 */
+  text-decoration: none;
 }
 
 /* 글씨 크기 고정 */
-.dropdown-menu a:link { 
-    color: #43000A;
-    text-decoration: none;
+.dropdown-menu a:link {
+  color: #43000a;
+  text-decoration: none;
 }
 
 .dropdown-menu a:visited {
-    color: #43000A;
-    text-decoration: none;
+  color: #43000a;
+  text-decoration: none;
 }
 
 .dropdown-menu a:hover {
-    color: #43000A;
-    text-decoration: none;
+  color: #43000a;
+  text-decoration: none;
 }
 
 .dropdown-menu a:active {
-    color: #43000A;
-    text-decoration: none;
+  color: #43000a;
+  text-decoration: none;
 }
 
 .dropdown-menu li:last-child {
-    border-bottom: none; /* 마지막 아이템의 구분선 제거 */
+  border-bottom: none; /* 마지막 아이템의 구분선 제거 */
 }
 
 /* 드롭다운 메뉴가 표시될 때 보이도록 설정 */
 .ul {
-    display: block;
+  display: block;
 }

@@ -1,0 +1,86 @@
+.things {
+  text-align: center;
+}
+
+.things img {
+  width: 114px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.form2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-box-input-lg {
+  width: calc(80vw - 20px);
+  height: 40px;
+  border: solid 1.5px #43000a;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+
+  margin-top: 20px;
+  padding: 5px 10px;
+}
+
+@media (hover: hover) {
+  .form-box-input-lg {
+    width: calc(390px * 0.8 - 20px);
+  }
+}
+
+.input-field-lg {
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  font-family: "Pretendard-Regular";
+}
+
+.login-btn {
+  font-size: 20px;
+  font-family: "Pretendard-Regular";
+  background-color: #fccb6f;
+  border: solid 2px #fccb6f;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  width: 80vw;
+  height: 45px;
+  padding: 0;
+  /* margin-top: 30px; */
+}
+
+@media (hover: hover) {
+  .login-btn {
+    width: calc(390px * 0.8);
+  }
+}
+
+.apple-login {
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.apple-login-circle {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: solid 1.5px #43000a;
+  border-radius: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.apple-login img {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+}

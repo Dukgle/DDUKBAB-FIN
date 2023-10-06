@@ -1,0 +1,9 @@
+.verify {
+  background-color: white;
+  color: #fff;
+  height: 75px;
+  padding: 25px;
+  /* padding-top: 135px; */
+  display: flex;
+  align-items: flex-end;
+}

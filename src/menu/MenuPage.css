@@ -1,0 +1,46 @@
+.menu-inform-wrap {
+    padding: 10px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border: 1px solid #40003A;
+    border-radius: 5px;
+}
+
+.bookmarkIcon {
+    display: block;
+    padding: 10px;
+    float: right;
+}
+
+.menu-img {
+    display: inline-block;
+}
+
+.infrom-text {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 20px;
+    padding-top: 30px;
+}
+
+.menu-name {
+    font-weight: bolder;
+    font-size: large;
+    text-align: center;
+}
+
+.menu-price {
+    text-align: center;
+}
+
+.nutrient-img {
+    padding-top: 20px;
+}
+
+.chart {
+    display: inline-block;
+}
+
+#gap {
+    height: 15px;
+}

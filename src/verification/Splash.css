@@ -1,0 +1,26 @@
+.splash {
+  text-align: center;
+  margin-top: 150px;
+}
+
+.splash img {
+  width: 114px;
+}
+
+.signup-button button,
+.login-button button {
+  font-size: 20px;
+  font-family: "Pretendard-Regular";
+  background-color: #fccb6f;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  height: 45px;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.signup-button button {
+  margin-top: 70px;
+}

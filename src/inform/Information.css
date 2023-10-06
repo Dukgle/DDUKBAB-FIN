@@ -1,0 +1,39 @@
+.name-box > .input-field {
+  margin-left: 10px;
+}
+
+.inform-change-btns {
+  display: flex;
+  justify-content: right;
+  margin-top: 20px;
+}
+
+.change-none-btn,
+.change-save-btn {
+  font-family: "Pretendard-Regular";
+  width: 75px;
+  height: 35px;
+  background-color: #fccb6f;
+  border: solid 1.5px #43000a;
+  border-radius: 5px;
+  padding: 0;
+  font-size: 18px;
+}
+
+.change-none-btn {
+  background-color: #d9d9d9;
+  margin-right: 10px;
+}
+
+.informs-notchange {
+  margin-top: 20px;
+}
+
+.informs-notchange > hr {
+  border: none;
+  border-bottom: solid 1.5px #43000a;
+}
+
+.informs-out {
+  color: #b2b1b1;
+}

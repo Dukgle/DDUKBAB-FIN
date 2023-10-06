@@ -1,0 +1,56 @@
+.menu-container {
+  width: 40%;
+  height: 140px;
+  margin: 5px;
+  margin-top: 10px;
+  padding: 10px;
+  padding-top: 5px;
+  display: inline-block;
+  font-size: large;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  border-radius: 5px;
+  border: 1px solid #43000a;
+  transition: background-color 0.3s;
+}
+
+.img-menus {
+  display: inline-block;
+}
+
+.img-menus img {
+  width: 90px;
+  height: 70px;
+}
+
+.bookmarkIcon {
+  display: block;
+  float: right;
+  padding: 0px;
+  width: 20px;
+  height: 20px;
+}
+
+.bookmark-button {
+  padding: 0px;
+}
+
+.menu-wrap {
+  height: 120px;
+  display: inline-block;
+  vertical-align: bottom;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#gap {
+  height: 15px;
+}
+
+.name {
+  text-align: center;
+  text-decoration: none;
+}
