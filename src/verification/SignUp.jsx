@@ -35,7 +35,7 @@ function SignUp() {
     // e.preventDefault(); // 폼 제출 기본 동작을 막습니다.
 
     try {
-      const response = await axios.post("http://localhost:5000/signup", {
+      const response = await axios.post('http://localhost:5000/api/signup', {
         username: name,
         uni_num: number,
         nickname: username,

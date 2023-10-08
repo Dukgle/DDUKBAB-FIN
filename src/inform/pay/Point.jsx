@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import Header_mypage from "../../header/Header_mypage";
 import { Link } from "react-router-dom";
-import axios from "axios";
-
 import "./Pay.css";
+import axiosInstance from "../../api";
 
 function Point() {
     const logoText = "포인트 충전";
     const [chargeAmount, setChargeAmount] = useState("");
-    const [username, setUsername] = useState(""); // 사용자 이름 상태 추가
 
     // '충전 금액' 입력 필드 값이 변경될 때 실행되는 함수
     const handleAmountChange = (event) => {
@@ -31,7 +29,6 @@ function Point() {
             merchant_uid: 'merchant_' + new Date().getTime(),
             name: '주문명 : 주문명 설정',
             amount: money,
-            buyer_name: username,
             buyer_tel: '010-1234-5678',
             m_redirect_url: 'localhost:3000/mypage',
         }, function (rsp) {
@@ -45,7 +42,7 @@ function Point() {
                 msg += '카드 승인번호 : ' + rsp.apply_num;
     
                 // 결제가 성공한 경우, axios를 사용하여 서버로 데이터를 전송합니다.
-                axios.get("/user/mypage/charge/point", {
+                axiosInstance.put("/user/mypage/charge-point", {
                     params: {
                         amount: money
                     }

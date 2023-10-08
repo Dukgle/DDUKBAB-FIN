@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../header/Header';
 import './ReviewMain.css';
 import { Link } from 'react-router-dom';
-import ReviewWrite from './ReviewWrite';
+// import ReviewWrite from './ReviewWrite';
 import star from '../icon/star2.png';
 
 function ReviewMain() {

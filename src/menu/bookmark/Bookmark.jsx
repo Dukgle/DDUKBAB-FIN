@@ -22,7 +22,7 @@ class BookmarkButton extends React.Component{
 
     // API를 호출하여 즐겨찾기 생성
   createBookmark = () => {
-    const { menu_name } = this.props; // 즐겨찾기할 메뉴 이름
+    const { menu_name } = this.props; // 즐겨찾기할 메뉴 이름 ??
     axiosInstance.post('/users/bookmarks/create', { menu_name })
       .then((response) => {
         console.log('즐겨찾기 생성 성공');
@@ -47,9 +47,10 @@ class BookmarkButton extends React.Component{
   };
 
     render(){
+        const { isChecked } = this.state;
         return(
             <div className="icons-list">
-                {this.state.isChecked ?                                                                                         //삼항연산자_isChecked가 True면
+                {isChecked ?                                                                                         //삼항연산자_isChecked가 True면
                 <StarFilled style={{ fontSize: '20px', color: '#FCCB6F'}} onClick={this.onClick}/>:		// 즐겨찾기 버튼 활성화, false면 비어있는 하트를 return
                 <StarOutlined style={{ fontSize: '20px', color: '#40003A'}} onClick={this.onClick}/>}
             </div>
