@@ -3,13 +3,12 @@ import './Cart_Bookmark.css';
 import BookmarkButton from '../../menu/bookmark/Bookmark';
 
 function Cart_Bookmark({ bookmark_menus }) {
-    // 가게 이름을 기준으로 메뉴를 그룹화합니다.
     const groupedMenus = {};
     bookmark_menus.forEach((menu) => {
-        if (!groupedMenus[menu.name]) {
-            groupedMenus[menu.name] = [];
+        if (!groupedMenus[menu.store_name]) { // store_name을 기준으로 그룹화
+            groupedMenus[menu.store_name] = [];
         }
-        groupedMenus[menu.name].push(menu);
+        groupedMenus[menu.store_name].push(menu);
     });
 
     return (
@@ -18,21 +17,22 @@ function Cart_Bookmark({ bookmark_menus }) {
                 <p>내가 담은 메뉴가 없습니다.</p>
             ) : (
                 <div>
-                    {Object.keys(groupedMenus).map((storeName) => (
-                        <div key={storeName} className='store-info'>
-                            <h2>{storeName}</h2>
+                    {Object.keys(groupedMenus).map((store_name) => (
+                        <div key={store_name} className='store-info'>
+                            <h2>{store_name}</h2>
                             <div className='menu-list'>
-                                {groupedMenus[storeName].map((menu) => (
-                                    <div key={menu.id} className='bookmark-item'>
+                                {groupedMenus[store_name].map((menu) => (
+    
+                                    <div key={menu.menu_id} className='bookmark-item'>
                                         <div className='cart-bookmarkIcon'>
-                                            <BookmarkButton />
+                                            <BookmarkButton menu_name={menu.menu_name}/>
                                         </div>
                                         <div className='bookmark-item-wrap'>
                                             <div className='bookmark-item-img'>
-                                                <img src={menu.image} alt='사진' width='70' height='50' />
+                                                <img src={"./4분돼지김치파스타.jpg"}alt='사진' width='70' height='50' />
                                             </div>
                                             <div className='bookmark-menu-name'>
-                                                {menu.menu}
+                                                {menu.menu_name}
                                             </div>
                                         </div>
                                     </div>

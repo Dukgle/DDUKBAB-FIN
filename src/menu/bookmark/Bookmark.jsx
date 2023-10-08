@@ -22,30 +22,40 @@ class BookmarkButton extends React.Component{
         }
     }
 
-    // API를 호출하여 즐겨찾기 생성
-  createBookmark = (menu_name) => {
-    axiosInstance.post('/users/bookmarks/create', { menu_name})
-      .then((response) => {
-        console.log('즐겨찾기 생성 성공');
-        this.setState({ isChecked: true });
-      })
-      .catch((error) => {
-        console.error('즐겨찾기 생성 오류:', error);
-      });
-  };
+// 즐겨찾기 추가 함수
+createBookmark = (menu_name) => {
+  axiosInstance.post('/users/bookmarks/create', { menu_name })
+    .then((response) => {
+      console.log('즐겨찾기 생성 성공');
+      this.setState({ isChecked: true });
+      
+      // 로컬 스토리지에 즐겨찾기 추가
+      const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+      bookmarks.push(menu_name);
+      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+    })
+    .catch((error) => {
+      console.error('즐겨찾기 생성 오류:', error);
+    });
+};
 
-  // API를 호출하여 즐겨찾기 삭제
-  deleteBookmark = (menu_name) => {
-    // const { menuName } = this.props; // 삭제할 즐겨찾기 ID
-    axiosInstance.delete(`/users/bookmarks/delete/${menu_name}`)
-      .then((response) => {
-        console.log('즐겨찾기 삭제 성공');
-        this.setState({ isChecked: false });
-      })
-      .catch((error) => {
-        console.error('즐겨찾기 delete 오류:', error);
-      });
-  };
+// 즐겨찾기 삭제 함수
+deleteBookmark = (menu_name) => {
+  axiosInstance.delete(`/users/bookmarks/delete/${menu_name}`)
+    .then((response) => {
+      console.log('즐겨찾기 삭제 성공');
+      this.setState({ isChecked: false });
+      
+      // 로컬 스토리지에서 즐겨찾기 삭제
+      const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+      const updatedBookmarks = bookmarks.filter(item => item !== menu_name);
+      localStorage.setItem('bookmarks', JSON.stringify(updatedBookmarks));
+    })
+    .catch((error) => {
+      console.error('즐겨찾기 delete 오류:', error);
+    });
+};
+
 
     render(){
         const { isChecked } = this.state;

@@ -36,8 +36,9 @@ function Pasta() {
           <div className="menu-container" key={m.name}>
             <div className="bookmarkIcon">
               <BookmarkButton menu_name={m.name}/>
+
             </div>
-            <Link to={`/menu/${m.name}`}>
+            <Link to={`/menu/${m.menu_name}?price=${m.price}`}>
               <div className="menu-wrap" id={m.name}>
                 <div className="img-menus">{menusOut.some((menu) => menu.name === m.name) ? <img src={soldOutImage} alt="품절" className="sold-out-image" width="80" height="60" /> : <img src={images[m.name]} alt="사진" width="90" height="70" />}</div>
                 <div className="name">{m.name}</div>

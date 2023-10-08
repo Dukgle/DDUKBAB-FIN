@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../header/Header';
 import './ReviewWrite.css';
+import axiosInstance from '../api';
 
 function ReviewWrite() {
     const logoText = "후기 게시판";
@@ -45,13 +46,30 @@ function ReviewWrite() {
         );
     }
 
-    const handleRegisterClick = () => {
-        // 리뷰 등록 로직을 여기에 추가
-        // 성공적으로 리뷰가 등록되면 아래의 알림창을 표시하고 페이지를 이동할 수 있습니다.
+    const reviewWrite = async (e) => {
+        // e.preventDefault(); // 폼 제출 기본 동작을 막습니다.
+    
+        try {
+          const response = await axiosInstance.post('/users/posts/create', {
+            sort: selectedOption1,
+            menu: selectedOption2,
+            star: selectedOption3,
+            title: title,
+            content: content,
+          });
+          console.log("후기 작성 성공", response.data);
+          // 회원가입 성공 후 다른 작업 수행
+          // 예: 회원가입 성공 메시지 표시, 로그인 페이지로 리다이렉트 등
+        } catch (error) {
+          console.error("후기 작성 오류", error.response.data);
+          // 회원가입 실패 처리
+          // 예: 실패 메시지 표시
+        }
+
         alert('리뷰가 등록되었습니다.');
         // 이전 페이지로 이동
         history(-1);
-    };
+      };
 
     return (
         <div className="review-page">
@@ -115,7 +133,7 @@ function ReviewWrite() {
                 />
             </div>
             {/* 등록 버튼 */}
-            <button className="registerBtn" onClick={handleRegisterClick}>
+            <button className="registerBtn" onClick={reviewWrite}>
                 등록
             </button>
         </div>

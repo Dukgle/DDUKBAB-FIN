@@ -6,21 +6,24 @@ const db = require('../config/dbConfig');
 
 // 미들웨어: JWT 검증 및 사용자 인증
 function verifyToken(req, res, next) {
-  const token = req.headers.authorization.split(' ')[1];
-//   console.log(token);
-
+  // 헤더에서 인증 토큰을 추출
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(' ')[1]; // Bearer 다음의 토큰값
+  // console.log(token)
   if (!token) {
     return res.status(401).json({ error: '인증 토큰이 없습니다' });
   }
 
+  // 토큰 검증
   jwt.verify(token, 'your-secret-key', (err, decoded) => {
     if (err) {
-        console.log(err);
+      console.error(err);
       return res.status(401).json({ error: '인증 토큰이 유효하지 않습니다' });
-
     }
-    req.userId = decoded.userId; // JWT에 저장된 사용자 ID를 request 객체에 저장
-    req.role = decoded.role; // JWT에 저장된 사용자 역할을 request 객체에 저장
+
+    // 토큰에서 추출한 정보를 request 객체에 저장
+    req.userId = decoded.userId; // 예시: 사용자 ID
+    req.role = decoded.role; // 예시: 사용자 역할
     next();
   });
 }
@@ -70,21 +73,21 @@ router.get('/get', verifyToken, (req, res) => {
 // 모두가 확인 가능
 router.get('/get-everyone', (req, res) => {
   // "sort"와 "menu" 값을 요청에서 추출합니다.
-  const { sort, menu } = req.body;
+  const { sort, menu } = req.query;
 
   // SQL 쿼리를 동적으로 생성합니다.
-  let query = 'SELECT users.nickname, posts.content, posts.star, posts.created_at FROM posts join users where posts.user_id = users.user_id and posts.sort = ? AND posts.menu = ?';
+  let query = 'SELECT users.nickname, posts.content, posts.star FROM posts join users where posts.user_id = users.user_id and posts.sort = ? AND posts.menu = ?';
 
-  // // "sort" 및 "menu"가 요청에 포함된 경우, 조건을 추가합니다.
-  // if (sort && menu) {
-  //   query += ` `;
-  // } else if (sort) {
-  //   query += ` and sort = ?`;
-  // } else if (menu) {
-  //   query += ` and menu = ?`;
-  // }
+  // "sort" 및 "menu"가 요청에 포함된 경우, 조건을 추가합니다.
+  if (sort && menu) {
+    query += ` `;
+  } else if (sort) {
+    query += ` and sort = ?`;
+  } else if (menu) {
+    query += ` and menu = ?`;
+  }
 
-  // console.log(query)
+  console.log(query)
 
   // 데이터베이스 쿼리를 실행합니다.
   db.query(query, [sort, menu], (err, result) => {
@@ -105,13 +108,22 @@ router.get('/get-everyone', (req, res) => {
 // 모두가 최신 순으로 볼 수 있게
 router.get('/get-everyone/latest', (req, res) => {
   // "sort"와 "menu" 값을 요청에서 추출합니다.
-  const { sort, menu } = req.body;
+  const { sort, menu } = req.query;
 
   // SQL 쿼리를 동적으로 생성합니다.
-  let query = 'SELECT users.nickname, posts.content, posts.star, posts.created_at FROM posts JOIN users ON posts.user_id = users.user_id';
+  let query = 'SELECT users.nickname, posts.content, posts.star FROM posts join users where posts.user_id = users.user_id and posts.sort = ? AND posts.menu = ?';
+
+    // // "sort" 및 "menu"가 요청에 포함된 경우, 조건을 추가합니다.
+    // if (sort && menu) {
+    //   query += ` `;
+    // } else if (sort) {
+    //   query += ` and sort = ?`;
+    // } else if (menu) {
+    //   query += ` and menu = ?`;
+    // }
 
   // 정렬 기준을 추가하여 최신순으로 정렬합니다.
-  query += ' ORDER BY posts.created_at ASC';
+  query += ' ORDER BY posts.created_at DESC';
 
   // 데이터베이스 쿼리를 실행합니다.
   db.query(query, [sort, menu], (err, result) => {

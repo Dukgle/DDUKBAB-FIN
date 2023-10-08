@@ -54,6 +54,22 @@ function MyPage() {
     }
   };
 
+  const logout = async (e) => {
+    try {
+      const response = await axiosInstance.post('/logout', {
+        nickname: nickname
+      });
+
+      console.log('로그아웃 성공', response.data);
+      // 닉네임 변경 성공 후 다른 작업 수행
+      // 예: 성공 메시지 표시, 리다이렉트 등
+    } catch (error) {
+      console.error('로그아웃 오류', error.response.data);
+      // 오류 처리
+      // 예: 실패 메시지 표시
+    }
+  };
+
   return (
     <div className="my-page">
       <Header logoText={logoText} />
@@ -77,7 +93,7 @@ function MyPage() {
             <button className="pay-btn">포인트 충천하기</button>
           </Link>
           <Link to="/">
-            <button className="logout-btn">로그아웃</button>
+            <button className="logout-btn" onClick={logout}>로그아웃</button>
           </Link>
         </div>
 

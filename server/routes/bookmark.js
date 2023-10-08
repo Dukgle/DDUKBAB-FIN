@@ -28,7 +28,7 @@ function verifyToken(req, res, next) {
   router.get('/get', verifyToken, (req, res) => {
     const userId = req.userId;
   
-    const query = `SELECT * FROM bookmarks WHERE user_id = ?`;
+    const query = `SELECT bookmarks.menu_name, menu.store_name, menu.image_path FROM bookmarks JOIN menu ON menu.menu_name = bookmarks.menu_name WHERE user_id = ?`;
   
     db.query(query, [userId], (err, result) => {
       if (err) {
@@ -44,6 +44,7 @@ function verifyToken(req, res, next) {
       res.json({ bookmarks });
     });
   });
+
   router.post('/create', verifyToken, (req, res) => {
     const userId = req.userId;
     const { menu_name } = req.body;
@@ -62,13 +63,13 @@ function verifyToken(req, res, next) {
   });
 
   // 즐겨찾기 취소
-  router.delete('/delete/:menuName', verifyToken, (req, res) => {
+  router.delete('/delete/:menu_name', verifyToken, (req, res) => {
     const userId = req.userId;
-    const menuName = req.body;
+    const menu_name = req.params.menu_name;
   
     const query = `DELETE FROM bookmarks WHERE menu_name =? AND user_id=?`;
   
-    db.query(query, [menuName, userId], (err, result) => {
+    db.query(query, [menu_name, userId], (err, result) => {
       if (err) {
         console.error('즐겨찾기 삭제 오류:', err);
         res.status(500).json({ error: '즐겨찾기 삭제 실패' });

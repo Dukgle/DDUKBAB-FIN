@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Header from '../header/Header';
 import './ReviewMain.css';
 import { Link } from 'react-router-dom';
 // import ReviewWrite from './ReviewWrite';
 import star from '../icon/star2.png';
+import axiosInstance from '../api';
 
 function ReviewMain() {
     const logoText = "후기 게시판";
     const [selectedOption1, setSelectedOption1] = useState("");
     const [selectedOption2, setSelectedOption2] = useState("");
     const [sortBy, setSortBy] = useState("new"); // 정렬 방식 상태 추가
+    const [reviews, setReviews] = useState([]);
 
     // 리뷰 목록 상태 추가
-    const [reviews, setReviews] = useState([
-        { id: 1, title: '무난하게 맛있음', name: '학식마스터', content: '무난하게 맛있음 다음에는 다른 메뉴도 먹어봐야겠음', starRating: 4.5 , type: '파스타', menu: '알리오올리오'},
-        { id: 2, title: '맛있다옹', name: '미돼고지', content: '맛있다옹', starRating: 5.0, type: '군산카츠', menu: '돈카츠덮밥'},
-        { id: 3, title: '좀 짰어요 그래도 맛은 있음', name: '나는아직배고프다', content: '좀 짰어요 그래도 맛은 있음', starRating: 4.0, type: '오늘의메뉴A', menu: '오늘의메뉴A'}
-    ]);
+    // const [reviews, setReviews] = useState([
+    //     { id: 1, title: '무난하게 맛있음', name: '학식마스터', content: '무난하게 맛있음 다음에는 다른 메뉴도 먹어봐야겠음', starRating: 4.5 , type: '파스타', menu: '알리오올리오'},
+    //     { id: 2, title: '맛있다옹', name: '미돼고지', content: '맛있다옹', starRating: 5.0, type: '군산카츠', menu: '돈카츠덮밥'},
+    //     { id: 3, title: '좀 짰어요 그래도 맛은 있음', name: '나는아직배고프다', content: '좀 짰어요 그래도 맛은 있음', starRating: 4.0, type: '오늘의메뉴A', menu: '오늘의메뉴A'}
+    // ]);
 
     const typeOptions1 = [
         "오늘의메뉴A",
@@ -53,12 +55,28 @@ function ReviewMain() {
         setSortBy(sortByValue);
         if (sortByValue === "new") {
             // 최신순으로 정렬
-            const sortedReviews = [...reviews].sort((a, b) => b.id - a.id);
-            setReviews(sortedReviews);
+            reviewGet()
         } else if (sortByValue === "star") {
             // 별점순으로 정렬
-            const sortedReviews = [...reviews].sort((a, b) => b.starRating - a.starRating);
+            const sortedReviews = [...reviews].sort((a, b) => b.star - a.star);
             setReviews(sortedReviews);
+        }
+    };
+
+    useEffect(() => {
+        // 컴포넌트가 마운트될 때와 선택된 옵션값이 변경될 때 리뷰 목록을 가져옵니다.
+        reviewGet();
+    }, [selectedOption1, selectedOption2]);
+
+    const reviewGet = async () => {
+        try {
+            // axios를 사용하여 API를 호출합니다. sort와 menu 값을 파라미터로 전달합니다.
+            const response = await axiosInstance.get(`/users/posts/get-everyone/latest?sort=${selectedOption1}&menu=${selectedOption2}`)
+            // API 응답에서 리뷰 데이터를 추출하고 상태에 설정합니다.
+            setReviews(response.data.post);
+            console.log(response.data.post)
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
     };
 
@@ -122,11 +140,11 @@ function ReviewMain() {
                 {reviews.map((review) => (
                     <Link to={`/review/${review.id}`} key={review.id}>
                         <div className="review-item">
-                            <h3>{review.name}</h3>
+                            <h3>{review.nickname}</h3>
                             <p>{review.content}</p>
                             <div className="star-rating">
                                 <img src={star} alt="Star" />
-                                <span>{review.starRating}</span>
+                                <span>{review.star}</span>
                             </div>
                         </div>
                     </Link>

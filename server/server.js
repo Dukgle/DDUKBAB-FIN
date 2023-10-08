@@ -31,6 +31,7 @@ app.use(cookieParser())
 // CORS 설정
 app.use(bodyParser.urlencoded({ extended:true}));
 app.use(cors());
+// app.use('/uploads', express.static('uploads'));
 
 // API 라우트 추가
 app.use('/api', users);
