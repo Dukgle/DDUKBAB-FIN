@@ -8,8 +8,6 @@ import none from "../icon/circle-x.png";
 import check from "../icon/circle-check.png";
 import excl from "../icon/circle-excl.png";
 
-import axios from 'axios'
-
 function SignUp() {
   const logoText = "회원가입";
   const [selectedRole, setSelectedRole] = useState("");
@@ -35,20 +33,20 @@ function SignUp() {
 
   const signUp = async (e) => {
     // e.preventDefault(); // 폼 제출 기본 동작을 막습니다.
-    
+
     try {
-      const response = await axios.post('http://localhost:5000/signup', {
+      const response = await axios.post("http://localhost:5000/signup", {
         username: name,
         uni_num: number,
         nickname: username,
         password: password,
         role: selectedRole,
       });
-      console.log('회원가입 성공', response.data);
+      console.log("회원가입 성공", response.data);
       // 회원가입 성공 후 다른 작업 수행
       // 예: 회원가입 성공 메시지 표시, 로그인 페이지로 리다이렉트 등
     } catch (error) {
-      console.error('회원가입 오류', error.response.data);
+      console.error("회원가입 오류", error.response.data);
       // 회원가입 실패 처리
       // 예: 실패 메시지 표시
     }
@@ -180,7 +178,7 @@ function SignUp() {
                     backgroundColor: selectedRole && name && username && number && password && password2 && password === password2 && validatePassword() ? "#fccb6f" : "white",
                   }}
                   disabled={!(selectedRole && name && username && number && password && password2 && password === password2 && validatePassword())}
-                  onClick= {signUp}
+                  onClick={signUp}
                 />
               </Link>
             </>
