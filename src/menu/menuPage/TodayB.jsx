@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import Header_menu from '../../header/Header_menu';
-import { Link } from 'react-router-dom';
-
-function TodayB() {
-    const logoText = "오늘의 메뉴B";
-=======
 import './Today.css';
 import React, { Component } from 'react';
 import Header_menu from '../../header/Header_menu';
@@ -31,17 +23,10 @@ function TodayB() {
         slidesToShow: 1,
         slidesToScroll: 1
     }; 
->>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
 
     return (
         <div className="menu-page">
             <Header_menu logoText={logoText} />
-<<<<<<< HEAD
-            <Link to='/'>
-                <button className='cart-page-button'>내가 담은 장바구니</button>
-            </Link>
-
-=======
             <div id='gap'></div>
             <div className='menu-today'>
                 <Slider>
@@ -68,7 +53,6 @@ function TodayB() {
                     ))}
                 </Slider>
             </div>
->>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
         </div>
     );
 }

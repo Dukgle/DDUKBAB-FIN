@@ -7,11 +7,8 @@ import down from "../icon/arrow-down.png";
 import none from "../icon/circle-x.png";
 import check from "../icon/circle-check.png";
 import excl from "../icon/circle-excl.png";
-<<<<<<< HEAD
 
 import axios from 'axios'
-=======
->>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
 
 function SignUp() {
   const logoText = "회원가입";
@@ -36,7 +33,6 @@ function SignUp() {
     return regex.test(password);
   };
 
-<<<<<<< HEAD
   const signUp = async (e) => {
     // e.preventDefault(); // 폼 제출 기본 동작을 막습니다.
     
@@ -59,8 +55,6 @@ function SignUp() {
   };
   
 
-=======
->>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
   return (
     <div className="signUp-page">
       <Header logoText={logoText} />
@@ -187,10 +181,7 @@ function SignUp() {
                     backgroundColor: selectedRole && name && username && number && password && password2 && password === password2 && validatePassword() ? "#fccb6f" : "white",
                   }}
                   disabled={!(selectedRole && name && username && number && password && password2 && password === password2 && validatePassword())}
-<<<<<<< HEAD
                   onClick= {signUp}
-=======
->>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
                 />
               </Link>
             </>
