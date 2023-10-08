@@ -1,3 +1,37 @@
 .date {
     background-color: #FCCB6F;
+<<<<<<< HEAD
+=======
+    text-align: center;
+    margin: 10px;
+}
+
+.date {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+.gapDate {
+    color: black;
+}
+
+.menulist-today {
+    color: black;
+    border: 1px solid #40003a;
+    text-align: center;
+    border-radius: 5px;
+    margin: 10px;
+    margin-top: 20px;
+}
+
+ul {
+    padding: 0px;
+}
+
+li {
+    list-style-type: none;
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
 }

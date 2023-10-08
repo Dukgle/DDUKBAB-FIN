@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import Header from "../header/Header_verify";
 import { Link } from "react-router-dom";
 import "./Login.css";
+<<<<<<< HEAD
 import axios from 'axios'
+=======
+
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
 import Logo from "../icon/DDUKBAB.png";
 import Apple from "../icon/apple.png";
 
@@ -18,6 +22,7 @@ function Login() {
     return regex.test(password);
   };
 
+<<<<<<< HEAD
   const Login = async (e) => {
     
     try {
@@ -35,6 +40,8 @@ function Login() {
     }
   };
 
+=======
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
   const isFormValid = number !== "" && password !== "" && validatePassword();
 
   return (
@@ -60,7 +67,10 @@ function Login() {
                 cursor: isFormValid ? "pointer" : "not-allowed",
               }}
               disabled={!isFormValid}
+<<<<<<< HEAD
               onClick={Login}
+=======
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
             />
           </Link>
         </form>

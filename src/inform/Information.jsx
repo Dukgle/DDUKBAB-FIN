@@ -4,40 +4,9 @@ import { Link } from "react-router-dom";
 
 import "./Information.css";
 
-import axios from "axios";
-
 function Information() {
   const logoText = "내 정보";
-  const [nickname, setNickname] = useState("");
-
-  const handleInputChange = (e, setter) => {
-    setter(e.target.value);
-  };
-
-
-  // const infoMod = async (e) => {
-  //   try {
-  //     const response = await axios.put('http://localhost:5000/api/users/1/nickname-update', {
-  //       nickname: nickname
-  //     });
-  //     console.log('닉네임 변경 성공', response.data);
-  //   } catch (error) {
-  //     console.error('닉네임 변경 오류', error.response.data);
-
-  //   }
-  // };
-
-  const infoMod = async (e) => {
-    try {
-      const response = await axios.put('http://localhost:5000/api/users/1/nickname-update', {
-        nickname: nickname
-      });
-      console.log('닉네임 변경 성공', response.data);
-    } catch (error) {
-      console.error('닉네임 변경 오류', error.response.data);
-
-    }
-  };
+  const [username, setUsername] = useState("");
 
   return (
     <div className="inform-page">
@@ -50,10 +19,12 @@ function Information() {
           </div>
           <form action="" className="inform-change-form" method="post">
             <div className="name-box">
-              <input type="text" name="" id="username" className="input-field" placeholder="닉네임" value={nickname} onChange={(e) => handleInputChange(e, setNickname)} required/>
+              <input type="text" name="" id="username" className="input-field" placeholder="닉네임" value={username} onChange={(e) => setUsername(e.target.value)} required />
             </div>
             <div className="inform-change-btns">
-              <button className="change-none-btn">취소</button>
+              <Link to="/MyPage">
+                <button className="change-none-btn">취소</button>
+              </Link>
               <input id="" type="submit" className="change-save-btn" value="저장" />
             </div>
           </form>

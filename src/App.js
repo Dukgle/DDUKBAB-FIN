@@ -34,6 +34,19 @@ import Malatang from './menu/malatangPage/Malatang';
 import Toast from './menu/toastPage/Toast';
 import Cafe from './menu/cafePage/Cafe';
 
+<<<<<<< HEAD
+=======
+//옵션 페이지
+import OptionPasta from './menu/option/OptionPasta';
+import OptionKatsu from './menu/option/OptionKatsu';
+import OptionMalatang from './menu/option/OptionMalatang';
+import OptionMasung from './menu/option/OptionMasung';
+import OptionToast from './menu/option/OptionToast';
+import OptionCafe from './menu/option/OptionCafe';
+import OptionTodayA from './menu/option/OptionTodayA';
+import OptionTodayB from './menu/option/OptionTodayB';
+
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
 //메뉴 상세 페이지(파스타)
 import Oil from './menu/pastaPage/Oil';
 import Olio from './menu/pastaPage/Olio';
@@ -100,6 +113,53 @@ import Mala_xiangguo from './menu/malatangPage/Mala_xiangguo';
 import Small from './menu/malatangPage/Small';
 import Big from './menu/malatangPage/Big';
 import Tea_mala from './menu/malatangPage/Tea_mala';
+<<<<<<< HEAD
+=======
+
+//메뉴 상세 페이지(카페)
+import Americano from './menu/cafePage/Americano';
+import HazelAme from './menu/cafePage/HazelAme';
+import Latte from './menu/cafePage/Latte';
+import Cappuccino from './menu/cafePage/Cappuccino';
+import Latte_Vanilla from './menu/cafePage/Latte_Vanilla';
+import Latte_Vanilla_D from './menu/cafePage/Latte_Vanilla_D';
+import Latte_Hazel from './menu/cafePage/Latte_Hazel';
+import Latte_Hazel_D from './menu/cafePage/Latte_Hazel_D';
+import Cafemocha from './menu/cafePage/Cafemocha';
+import Latte_Caramel from './menu/cafePage/Latte_Caramel';
+import Latte_Dolce from './menu/cafePage/Latte_Dolce';
+import WhiteAme from './menu/cafePage/WhiteAme';
+import Icetea from './menu/cafePage/Icetea';
+import Latte_Tiramisu from './menu/cafePage/Latte_Tiramisu';
+import Latte_Choco from './menu/cafePage/Latte_Choco';
+import Latte_Green from './menu/cafePage/Latte_Green';
+import Milktea from './menu/cafePage/Milktea';
+import Latte_Rice from './menu/cafePage/Latte_Rice';
+import Latte_Mint from './menu/cafePage/Latte_Mint';
+import Latte_Toffeenut from './menu/cafePage/Latte_Toffeenut';
+import Latte_Tarot from './menu/cafePage/Latte_Tarot';
+import Latte_Cookie from './menu/cafePage/Latte_Cookie';
+import Latte_Strawberry from './menu/cafePage/Latte_Strawberry';
+import Tea_Black from './menu/cafePage/Tea_Black';
+import Latte_Pistachio from './menu/cafePage/Latte_Pistachio';
+import Latte_SweetP from './menu/cafePage/Latte_SweetP';
+import Latte_Coconut from './menu/cafePage/Latte_Coconut';
+import Soda from './menu/cafePage/Soda';
+import Tea_Herbal from './menu/cafePage/Tea_Herbal';
+import Milk from './menu/cafePage/Milk';
+import Yogurt from './menu/cafePage/Yogurt';
+import Smoothie_B from './menu/cafePage/Smoothie_B';
+import Smoothie_S from './menu/cafePage/Smoothie_S';
+import Smoothie_M from './menu/cafePage/Smoothie_M';
+import Smoothie_Y from './menu/cafePage/Smoothie_Y';
+import Smoothie_Y_B from './menu/cafePage/Smoothie_Y_B';
+import Smoothie_Y_S from './menu/cafePage/Smoothie_Y_S';
+import Smoothie_Y_M from './menu/cafePage/Smoothie_Y_M';
+import Frappe_Java from './menu/cafePage/Frappe_Java';
+import Frappe_Cream from './menu/cafePage/Frappe_Cream';
+import Frappe_Mint from './menu/cafePage/Frappe_Mint';
+import Frappe_Caramel from './menu/cafePage/Frappe_Caramel';
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
 
 function App() {
   return (
@@ -122,6 +182,7 @@ function App() {
         <Route path='/bookmark' element={<CartBookmark />} />     {/* 장바구니 즐겨찾기 */}
         <Route path='/order' element={<CartOrder />} />           {/* 장바구니 결제창 */}
         <Route path='/menu' element={<MenuMain />} />             {/* 메뉴 메인 페이지 */}
+<<<<<<< HEAD
         <Route path='/todayA' element={<TodayA />} />
         <Route path='/todayB' element={<TodayB />} />
         <Route path='/pasta' element={<Pasta />} />
@@ -130,6 +191,25 @@ function App() {
         <Route path='/malatang' element={<Malatang />} />
         <Route path='/toast' element={<Toast />} />
         <Route path='/cafe' element={<Cafe />} />
+=======
+        <Route path='/오늘의 메뉴 A' element={<TodayA />} />
+        <Route path='/오늘의 메뉴 B' element={<TodayB />} />
+        <Route path='/파스타' element={<Pasta />} />
+        <Route path='/군산카츠' element={<Katsu />} />
+        <Route path='/마성떡볶이' element={<Masung />} />
+        <Route path='/한우사골 마라탕' element={<Malatang />} />
+        <Route path='/토스트' element={<Toast />} />
+        <Route path='/샌드위치 카페' element={<Cafe />} />
+
+        <Route path='/optionPasta' element={<OptionPasta />} />        {/* 추가 옵션 페이지 */}
+        <Route path='/optionKatsu' element={<OptionKatsu />} />
+        <Route path='/optionCafe' element={<OptionCafe />} />
+        <Route path='/optionToast' element={<OptionToast />} />
+        <Route path='/optionMasung' element={<OptionMasung />} />
+        <Route path='/optionMalatang' element={<OptionMalatang />} />
+        <Route path='/optionTodayA' element={<OptionTodayA />} />
+        <Route path='/optionTodayB' element={<OptionTodayB />} />
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
 
         <Route path='/menu/고기리들기름파스타' element={<Oil />} />   {/* 파스타 페이지 */}
         <Route path='/menu/우삼겹알리올리오' element={<Olio />} />
@@ -192,6 +272,52 @@ function App() {
         <Route path='/menu/꿔바로우_소' element={<Small />} />
         <Route path='/menu/꿔바로우_대' element={<Big />} />
         <Route path='/menu/빙홍차' element={<Tea_mala />} />
+<<<<<<< HEAD
+=======
+
+        <Route path='/menu/아메리카노' element={<Americano />} />            {/* 카페 페이지 */}
+        <Route path='/menu/헤이즐넛아메리카노' element={<HazelAme />} />
+        <Route path='/menu/카페라떼' element={<Latte />} />
+        <Route path='/menu/카푸치노' element={<Cappuccino />} />
+        <Route path='/menu/바닐라라떼' element={<Latte_Vanilla />} />
+        <Route path='/menu/바닐라드림라떼' element={<Latte_Vanilla_D />} />
+        <Route path='/menu/헤이즐넛라떼' element={<Latte_Hazel />} />
+        <Route path='/menu/헤이즐넛드림라떼' element={<Latte_Hazel_D />} />
+        <Route path='/menu/카페모카' element={<Cafemocha />} />
+        <Route path='/menu/카라멜라떼' element={<Latte_Caramel />} />
+        <Route path='/menu/돌체라떼' element={<Latte_Dolce />} />
+        <Route path='/menu/화이트아메리카노' element={<WhiteAme />} />
+        <Route path='/menu/복숭아아이스티' element={<Icetea />} />
+        <Route path='/menu/티라미수라떼' element={<Latte_Tiramisu />} />
+        <Route path='/menu/초코라떼' element={<Latte_Choco />} />
+        <Route path='/menu/그린티라떼' element={<Latte_Green />} />
+        <Route path='/menu/밀크티' element={<Milktea />} />
+        <Route path='/menu/라이스믹스라떼' element={<Latte_Rice />} />
+        <Route path='/menu/민트초코라떼' element={<Latte_Mint />} />
+        <Route path='/menu/토피넛라떼' element={<Latte_Toffeenut />} />
+        <Route path='/menu/타로라떼' element={<Latte_Tarot />} />
+        <Route path='/menu/쿠키라떼' element={<Latte_Cookie />} />
+        <Route path='/menu/딸기라떼' element={<Latte_Strawberry />} />
+        <Route path='/menu/허니자몽블랙티' element={<Tea_Black />} />
+        <Route path='/menu/피스타치오라떼' element={<Latte_Pistachio />} />
+        <Route path='/menu/고구마라떼' element={<Latte_SweetP />} />
+        <Route path='/menu/코코넛라떼' element={<Latte_Coconut />} />
+        <Route path='/menu/메론소다' element={<Soda />} />
+        <Route path='/menu/허브차' element={<Tea_Herbal />} />
+        <Route path='/menu/우유' element={<Milk />} />
+        <Route path='/menu/퓨어프로즌요거트' element={<Yogurt />} />
+        <Route path='/menu/블루베리스무디' element={<Smoothie_B />} />
+        <Route path='/menu/딸기스무디' element={<Smoothie_S />} />
+        <Route path='/menu/망고스무디' element={<Smoothie_M />} />
+        <Route path='/menu/유자스무디' element={<Smoothie_Y />} />
+        <Route path='/menu/블루베리요거트스무디' element={<Smoothie_Y_B />} />
+        <Route path='/menu/딸기요거트스무디' element={<Smoothie_Y_S />} />
+        <Route path='/menu/망고요거트스무디' element={<Smoothie_Y_M />} />
+        <Route path='/menu/자바칩프라페' element={<Frappe_Java />} />
+        <Route path='/menu/쿠키앤크림프라페' element={<Frappe_Cream />} />
+        <Route path='/menu/민트초코칩프라페' element={<Frappe_Mint />} />
+        <Route path='/menu/카라멜프라페' element={<Frappe_Caramel />} />
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
       </Routes>
     </>
   );

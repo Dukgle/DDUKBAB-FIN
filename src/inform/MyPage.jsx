@@ -8,8 +8,6 @@ import "./MyPage.css";
 import linkImg from "../icon/linkImg.svg";
 import QrImg from "../img/QR_example.png";
 
-import axios from "axios";
-
 function MyPage() {
   const logoText = "마이페이지";
 

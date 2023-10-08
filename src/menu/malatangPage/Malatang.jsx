@@ -4,6 +4,10 @@ import Header_menu from "../../header/Header_menu";
 import { Link } from "react-router-dom";
 import images from "../../img/malatang/index.js";
 import BookmarkButton from "../bookmark/Bookmark";
+<<<<<<< HEAD
+=======
+import soldOutImage from "../../img/품절.png";
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
 
 function Malatang() {
   const logoText = "마라탕";
@@ -16,6 +20,11 @@ function Malatang() {
     { name: "빙홍차", price: "2,500" },
   ];
 
+<<<<<<< HEAD
+=======
+  const menusOut = [{ name: "꿔바로우_대", price: "10,000" }];
+
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
   return (
     <div className="menu-page">
       <Header_menu logoText={logoText} />
@@ -29,9 +38,13 @@ function Malatang() {
             <React.Fragment key={m.name}>
               <Link to={`/menu/${m.name}`}>
                 <div className="menu-wrap" id={m.name}>
+<<<<<<< HEAD
                   <div className="img-menus">
                     <img src={images[m.name]} alt="사진" width="90" height="70" />
                   </div>
+=======
+                  <div className="img-menus">{menusOut.some((menu) => menu.name === m.name) ? <img src={soldOutImage} alt="품절" className="sold-out-image" width="80" height="60" /> : <img src={images[m.name]} alt="사진" width="90" height="70" />}</div>
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
                   <div className="name">{m.name}</div>
                 </div>
               </Link>

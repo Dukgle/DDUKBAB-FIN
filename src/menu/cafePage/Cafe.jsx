@@ -4,6 +4,7 @@ import Header_menu from "../../header/Header_menu";
 import { Link } from "react-router-dom";
 import images from "../../img/cafe/index.js";
 import BookmarkButton from "../bookmark/Bookmark";
+import soldOutImage from "../../img/품절.png";
 
 function Cafe() {
   const logoText = "샌드위치 카페";
@@ -48,9 +49,15 @@ function Cafe() {
     { name: "딸기요거트스무디", price: "4,100" },
     { name: "망고요거트스무디", price: "4,100" },
     { name: "자바칩프라페", price: "3,800" },
-    { name: "쿠키앤크림라떼", price: "3,800" },
+    { name: "쿠키앤크림프라페", price: "3,800" },
     { name: "민트초코칩프라페", price: "3,800" },
     { name: "카라멜프라페", price: "3,800" },
+  ];
+
+  const menusOut = [
+    { name: "딸기요거트스무디", price: "4,100" },
+    { name: "망고요거트스무디", price: "4,100" },
+    { name: "밀크티", price: "3,200" },
   ];
 
   return (
@@ -66,9 +73,7 @@ function Cafe() {
             <React.Fragment key={m.name}>
               <Link to={`/menu/${m.name}`}>
                 <div className="menu-wrap" id={m.name}>
-                  <div className="img-menus">
-                    <img src={images[m.name]} alt="사진" width="90" height="70" />
-                  </div>
+                  <div className="img-menus">{menusOut.some((menu) => menu.name === m.name) ? <img src={soldOutImage} alt="품절" className="sold-out-image" width="80" height="60" /> : <img src={images[m.name]} alt="사진" width="90" height="70" />}</div>
                   <div className="name">{m.name}</div>
                 </div>
               </Link>

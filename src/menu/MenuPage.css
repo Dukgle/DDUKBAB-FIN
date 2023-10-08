@@ -3,6 +3,10 @@
     padding-top: 50px;
     padding-bottom: 50px;
     border: 1px solid #40003A;
+<<<<<<< HEAD
+=======
+    color: black;
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
     border-radius: 5px;
 }
 
@@ -43,4 +47,8 @@
 
 #gap {
     height: 15px;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127

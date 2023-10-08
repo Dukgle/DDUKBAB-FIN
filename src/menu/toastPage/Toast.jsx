@@ -4,6 +4,10 @@ import Header_menu from "../../header/Header_menu";
 import { Link } from "react-router-dom";
 import images from "../../img/toast/index.js";
 import BookmarkButton from "../bookmark/Bookmark";
+<<<<<<< HEAD
+=======
+import soldOutImage from "../../img/품절.png";
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
 
 function Toast() {
   const logoText = "토스트";
@@ -25,6 +29,16 @@ function Toast() {
     { name: "티라미수스틱케익", price: "2,900" },
   ];
 
+<<<<<<< HEAD
+=======
+  const menusOut = [
+    { name: "프렌치토스트_음료수", price: "4,000" },
+    { name: "크림치즈프렛즐", price: "2,700" },
+    { name: "글레이즈도넛", price: "1,300" },
+    { name: "바바리안크림도넛", price: "1,500" },
+  ];
+
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
   return (
     <div className="menu-page">
       <Header_menu logoText={logoText} />
@@ -38,9 +52,13 @@ function Toast() {
             <React.Fragment key={m.name}>
               <Link to={`/menu/${m.name}`}>
                 <div className="menu-wrap" id={m.name}>
+<<<<<<< HEAD
                   <div className="img-menus">
                     <img src={images[m.name]} alt="사진" width="90" height="70" />
                   </div>
+=======
+                  <div className="img-menus">{menusOut.some((menu) => menu.name === m.name) ? <img src={soldOutImage} alt="품절" className="sold-out-image" width="80" height="60" /> : <img src={images[m.name]} alt="사진" width="90" height="70" />}</div>
+>>>>>>> d7adfa1b0febb31538603b389d62bd3b46c00127
                   <div className="name">{m.name}</div>
                 </div>
               </Link>
