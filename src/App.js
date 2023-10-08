@@ -9,13 +9,13 @@ import SignUp from "./verification/SignUp";
 
 import MyPage from "./inform/MyPage";
 import MyPageSale from "./inform/MyPageSale";
-import Information from './inform/Information';
+import Information from "./inform/Information";
 
-import Point from './inform/pay/Point';
+import Point from "./inform/pay/Point";
 
-import Reservation from './reservation/Reservation';
-import TwoFourPage from './reservation/TwoFourPage';
-import ResModal from './reservation/ResModal';
+import Reservation from "./reservation/Reservation";
+import TwoFourPage from "./reservation/TwoFourPage";
+import ResModal from "./reservation/ResModal";
 import ResModal24 from "./reservation/ResModal24";
 
 import ReviewMain from "./review/ReviewMain";
@@ -162,7 +162,6 @@ import Frappe_Cream from "./menu/cafePage/Frappe_Cream";
 import Frappe_Mint from "./menu/cafePage/Frappe_Mint";
 import Frappe_Caramel from "./menu/cafePage/Frappe_Caramel";
 
-
 function App() {
   return (
     <>
@@ -173,12 +172,11 @@ function App() {
         <Route path="/mypage" element={<MyPage />} /> {/* 마이페이지 - 학생/교직원 */}
         <Route path="/mypagesale" element={<MyPageSale />} /> {/* 마이페이지 - 판매자 */}
         <Route path="/information" element={<Information />} /> {/* 내 정보 */}
-        <Route path='/mypage/point' element={<Point />} />               {/* 포인트창 */}
+        <Route path="/mypage/point" element={<Point />} /> {/* 포인트창 */}
         <Route path="/review" element={<ReviewMain />} />
         <Route path="/reviewwrite" element={<ReviewWrite />} />
         <Route path="/review/:id" element={<ReviewDetail />} />
         <Route path="/reservation" element={<Reservation />} /> {/* 자리 예약 */}
-
         <Route path="/twofourpage" element={<TwoFourPage />} />
         <Route path="/resmodal" element={<ResModal />} />
         <Route path="/resmodal24" element={<ResModal24 />} />
