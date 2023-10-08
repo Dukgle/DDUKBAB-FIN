@@ -32,7 +32,6 @@ router.put('/nickname-update', verifyToken, (req, res) => {
     const { nickname } = req.body;
   
     const query = `UPDATE users SET nickname=? WHERE user_id= ?`;
-  
     db.query(query, [nickname, userId], (err, result) => {
         if (err) {
             console.error('닉네임 업데이트 오류:', err);
@@ -42,12 +41,12 @@ router.put('/nickname-update', verifyToken, (req, res) => {
         res.json({ message: '닉네임 업데이트 성공' });
     });
   })
-
 router.get('/users-info', verifyToken, (req, res) => {
     const userId = req.userId;
     const query = `SELECT username, point, uni_num, role, nickname FROM users WHERE user_id = ?`;
 
     db.query(query, [userId],(err, result) => {
+
         if (err) {
             console.error('정보 조회 오류:', err);
             res.status(500).json({ error: '정보 조회 실패' });

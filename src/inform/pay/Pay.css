@@ -1,0 +1,36 @@
+.cacao-pay {
+    background-color: lightgray;
+    margin: 50px;
+    height: 200px;
+    text-align: center;
+}
+
+.cacao-pay-button {
+    display: inline-block;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.point-wrap {
+    border: 1px solid #40003a;
+    border-radius: 5px;
+    margin: 50px;
+    height: 200px;
+    text-align: center;
+}
+
+.point-balance {
+    display: inline-block;
+    margin: 30px;
+}
+
+#point-pay-text {
+    margin: 5px;
+}
+
+#charge_kakao {
+    margin: 20px;
+    background-color: #fccb6f;
+    border-radius: 20px;
+    padding: 10px;
+}

@@ -100,7 +100,7 @@ function Reservation() {
       </div>
 
       {/* 모달 렌더링 */}
-      <ResModal isOpen={modalIsOpen} closeModal={closeModal} content="의자 정보를 표시합니다." />
+      <ResModal isOpen={modalIsOpen} closeModal={closeModal} content="1인석 모달" />
 
       {/* 테이블 렌더링 */}
       <div className="tables-container-box">

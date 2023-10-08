@@ -36,6 +36,7 @@ function Login() {
       // 예: 회원가입 성공 메시지 표시, 로그인 페이지로 리다이렉트 등
     } catch (error) {
       console.error('로그인 오류', error.response.data.error);
+
       // 회원가입 실패 처리
       // 예: 실패 메시지 표시
     }

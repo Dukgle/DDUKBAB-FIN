@@ -3,36 +3,10 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt'); 
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const db = require('../config/dbConfig');
-
-// 사용자 정보 가져오기 엔드포인트
-router.get('/get-users', (req, res) => {
-  // 여기에서 사용자 정보를 DB에서 가져오는 쿼리를 실행합니다.
-  const query = 'SELECT user_id FROM users WHERE user_id = ?'; // 사용자 정보를 가져오는 SQL 쿼리 예시
-
-  // 로그인한 사용자의 userId 가져오기 (예: 토큰에서 userId를 추출)
-  const userId = req.user.user_id;
-
-  db.query(query, [userId], (err, rows) => {
-    if (err) {
-      console.error('사용자 정보 가져오기 오류:', err);
-      res.status(500).json({ error: '사용자 정보 가져오기 실패' });
-      return;
-    }
-
-    if (rows.length === 0) {
-      res.status(404).json({ error: '사용자를 찾을 수 없음' });
-      return;
-    }
-
-    // 사용자 정보를 클라이언트에 응답으로 보냅니다.
-    const userInfo = rows[0];
-    res.json(userInfo);
-  });
-});
 
 // 회원가입 API 엔드포인트
 router.post('/signup', (req, res) => {
@@ -120,44 +94,27 @@ router.post('/login', (req, res) => {
       const secretKey = 'your-secret-key'
       const expiresIn = '5h';
       const token = jwt.sign(payload, secretKey, {expiresIn});
-
       res.cookie('token', token, {
         httpOnly: true, // JavaScript로 접근 불가능하도록 설정
         sameSite: 'strict', // SameSite 설정
       });
       console.log('로그인 성공', token);
+
       res.json({ message: '로그인 성공', token});
       
     });
   });
 });
 
-// Add this route to your server code
-router.get('/verify-token', (req, res) => {
-  const token = req.headers.authorization;
-
-  if (!token) {
-    return res.status(400).json({ error: 'Token not provided' });
-  }
-
-  // Check if the token is in the validTokens array
-  if (validTokens.includes(token)) {
-    res.status(200).json({ isValid: true });
-  } else {
-    res.status(401).json({ isValid: false });
-  }
-});
-
-
 // 로그아웃
 const invalidTokens = [];
-console.log(invalidTokens);
 router.post('/logout', (req, res) => {
   const token = req.headers.authorization
 
   if (!token) {
     return res.status(400).json({ error: '토큰이 전송되지 않았습니다.' });
   }
+
 
     // 유효한 토큰 배열에서 삭제
     const index = validTokens.indexOf(token);

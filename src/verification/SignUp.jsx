@@ -8,6 +8,8 @@ import none from "../icon/circle-x.png";
 import check from "../icon/circle-check.png";
 import excl from "../icon/circle-excl.png";
 
+import axios from 'axios'
+
 function SignUp() {
   const logoText = "회원가입";
   const [selectedRole, setSelectedRole] = useState("");

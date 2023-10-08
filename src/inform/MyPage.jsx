@@ -73,7 +73,7 @@ function MyPage() {
         </div>
 
         <div className="pay-logout">
-          <Link to="/#">
+          <Link to="/mypage/point">
             <button className="pay-btn">포인트 충천하기</button>
           </Link>
           <Link to="/">
