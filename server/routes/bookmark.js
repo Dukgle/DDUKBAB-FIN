@@ -62,13 +62,13 @@ function verifyToken(req, res, next) {
   });
 
   // 즐겨찾기 취소
-  router.delete('/delete/:bookmarkId', verifyToken, (req, res) => {
+  router.delete('/delete/:menuName', verifyToken, (req, res) => {
     const userId = req.userId;
-    const bookmarkId = req.params.bookmarkId;
+    const menuName = req.body;
   
-    const query = `DELETE FROM bookmarks WHERE bookmark_id=? AND user_id=?`;
+    const query = `DELETE FROM bookmarks WHERE menu_name =? AND user_id=?`;
   
-    db.query(query, [bookmarkId, userId], (err, result) => {
+    db.query(query, [menuName, userId], (err, result) => {
       if (err) {
         console.error('즐겨찾기 삭제 오류:', err);
         res.status(500).json({ error: '즐겨찾기 삭제 실패' });

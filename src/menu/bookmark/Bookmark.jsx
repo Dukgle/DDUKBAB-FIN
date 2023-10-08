@@ -1,5 +1,5 @@
 import React from 'react';
-import {StarFilled, StarOutlined, StarTwoTone} from '@ant-design/icons';
+import {StarFilled, StarOutlined} from '@ant-design/icons';
 import axiosInstance from '../../api';
 //import './style.css'
 
@@ -10,20 +10,21 @@ class BookmarkButton extends React.Component{
 
     onClick = () => {				//버튼을 누를때마다
         const { isChecked } = this.state;
+        const {menu_name} = this.props;
+        console.log(menu_name);
         // 즐겨찾기 버튼 클릭 시 즐겨찾기 생성 또는 삭제
         if (isChecked) {
           // 이미 즐겨찾기되어 있는 경우, 삭제
-          this.deleteBookmark();
+          this.deleteBookmark(menu_name);
         } else {
           // 즐겨찾기가 되어 있지 않은 경우, 생성
-          this.createBookmark();
+          this.createBookmark(menu_name);
         }
     }
 
     // API를 호출하여 즐겨찾기 생성
-  createBookmark = () => {
-    const { menu_name } = this.props; // 즐겨찾기할 메뉴 이름 ??
-    axiosInstance.post('/users/bookmarks/create', { menu_name })
+  createBookmark = (menu_name) => {
+    axiosInstance.post('/users/bookmarks/create', { menu_name})
       .then((response) => {
         console.log('즐겨찾기 생성 성공');
         this.setState({ isChecked: true });
@@ -34,9 +35,9 @@ class BookmarkButton extends React.Component{
   };
 
   // API를 호출하여 즐겨찾기 삭제
-  deleteBookmark = () => {
-    const { bookmarkId } = this.props; // 삭제할 즐겨찾기 ID
-    axiosInstance.delete(`/users/bookmarks/delete/${bookmarkId}`)
+  deleteBookmark = (menu_name) => {
+    // const { menuName } = this.props; // 삭제할 즐겨찾기 ID
+    axiosInstance.delete(`/users/bookmarks/delete/${menu_name}`)
       .then((response) => {
         console.log('즐겨찾기 삭제 성공');
         this.setState({ isChecked: false });

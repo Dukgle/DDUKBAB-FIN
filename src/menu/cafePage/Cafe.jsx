@@ -68,7 +68,7 @@ function Cafe() {
         {menus.map((m, i) => (
           <div className="menu-container">
             <div className="bookmarkIcon">
-              <BookmarkButton />
+              <BookmarkButton menu_name={m.name}/>
             </div>
             <React.Fragment key={m.name}>
               <Link to={`/menu/${m.name}`}>
