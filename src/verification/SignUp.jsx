@@ -8,8 +8,6 @@ import none from "../icon/circle-x.png";
 import check from "../icon/circle-check.png";
 import excl from "../icon/circle-excl.png";
 
-import axios from 'axios'
-
 function SignUp() {
   const logoText = "회원가입";
   const [selectedRole, setSelectedRole] = useState("");
@@ -37,7 +35,7 @@ function SignUp() {
     // e.preventDefault(); // 폼 제출 기본 동작을 막습니다.
     
     try {
-      const response = await axios.post('http://localhost:5000/signup', {
+      const response = await axios.post('http://localhost:5000/api/signup', {
         username: name,
         uni_num: number,
         nickname: username,
