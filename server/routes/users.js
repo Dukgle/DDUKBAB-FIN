@@ -3,8 +3,9 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt'); 
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 const db = require('../config/dbConfig');
 
 // 회원가입 API 엔드포인트
@@ -41,6 +42,7 @@ router.post('/signup', (req, res) => {
   });
 });
 
+const validTokens = [];
 router.post('/login', (req, res) => {
   const { uni_num, password} = req.body;
 
@@ -92,7 +94,12 @@ router.post('/login', (req, res) => {
       const secretKey = 'your-secret-key'
       const expiresIn = '5h';
       const token = jwt.sign(payload, secretKey, {expiresIn});
-      console.log('로그인 성공');
+      res.cookie('token', token, {
+        httpOnly: true, // JavaScript로 접근 불가능하도록 설정
+        sameSite: 'strict', // SameSite 설정
+      });
+      console.log('로그인 성공', token);
+
       res.json({ message: '로그인 성공', token});
       
     });
@@ -108,8 +115,12 @@ router.post('/logout', (req, res) => {
     return res.status(400).json({ error: '토큰이 전송되지 않았습니다.' });
   }
 
-  // 무효화된 토큰 배열에 토큰을 추가합니다.
-  invalidTokens.push(token);
+
+    // 유효한 토큰 배열에서 삭제
+    const index = validTokens.indexOf(token);
+    if (index !== -1) {
+      validTokens.splice(index, 1);
+    }
 
   // 로그아웃 메시지를 응답으로 보내줍니다.
   res.json({ message: '로그아웃 성공' });

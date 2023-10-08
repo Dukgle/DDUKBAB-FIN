@@ -4,25 +4,27 @@ const jwt = require('jsonwebtoken');
 const db = require('../config/dbConfig');
 
 function verifyToken(req, res, next) {
-    const token = req.headers.authorization.split(' ')[1];
-  //   console.log(token);
-  
-    if (!token) {
-      return res.status(401).json({ error: '인증 토큰이 없습니다' });
-    }
-  
-    jwt.verify(token, 'your-secret-key', (err, decoded) => {
-      if (err) {
-          console.log(err);
-        return res.status(401).json({ error: '인증 토큰이 유효하지 않습니다' });
-  
-      }
-      req.userId = decoded.userId; // JWT에 저장된 사용자 ID를 request 객체에 저장
-      req.role = decoded.role; // JWT에 저장된 사용자 역할을 request 객체에 저장
-      next();
-    });
+  // 헤더에서 인증 토큰을 추출
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(' ')[1]; // Bearer 다음의 토큰값
+  // console.log(token)
+  if (!token) {
+    return res.status(401).json({ error: '인증 토큰이 없습니다' });
   }
 
+  // 토큰 검증
+  jwt.verify(token, 'your-secret-key', (err, decoded) => {
+    if (err) {
+      console.error(err);
+      return res.status(401).json({ error: '인증 토큰이 유효하지 않습니다' });
+    }
+
+    // 토큰에서 추출한 정보를 request 객체에 저장
+    req.userId = decoded.userId; // 예시: 사용자 ID
+    req.role = decoded.role; // 예시: 사용자 역할
+    next();
+  });
+}
   router.get('/get', verifyToken, (req, res) => {
     const userId = req.userId;
   
@@ -59,6 +61,7 @@ function verifyToken(req, res, next) {
     });
   });
 
+  // 즐겨찾기 취소
   router.delete('/delete/:bookmarkId', verifyToken, (req, res) => {
     const userId = req.userId;
     const bookmarkId = req.params.bookmarkId;

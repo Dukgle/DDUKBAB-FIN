@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../header/Header";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
+import axiosInstance from '../api';
 
 import "./MyPage.css";
 
@@ -10,6 +11,13 @@ import QrImg from "../img/QR_example.png";
 
 function MyPage() {
   const logoText = "마이페이지";
+  const [username, setName] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [point, setPoint] = useState("");
+  useEffect(() => {
+    // 페이지가 처음 렌더링될 때 사용자 정보를 가져오는 함수 호출
+    getInfo()
+  }, []);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -21,6 +29,31 @@ function MyPage() {
     setModalIsOpen(false); // 모달창을 닫을 수 있는 상태
   };
 
+  const getInfo = async () => {
+    try {
+      const response = await axiosInstance.get('/users/users-info'); // API 엔드포인트를 적절하게 수정
+  
+      const userData = response.data.user_info; // 서버에서 받은 사용자 정보
+      // console.log(userData)
+      const { username, nickname, point} = userData; // 이름, 학번, 역할 추출
+  
+      // 추출한 데이터를 React 상태에 저장
+      // useState 훅을 사용하여 해당 상태 변수를 선언해야 합니다.
+      // 예: const [name, setName] = useState("");
+      // setName(name); // 이름 데이터 저장
+      setName(username);
+      setNickname(nickname);
+      setPoint(point);
+        
+      // 다른 필요한 정보도 위와 같은 방식으로 저장
+  
+    } catch (error) {
+      console.error('사용자 정보 가져오기 오류', error.response.data);
+      // 오류 처리
+      // 예: 실패 메시지 표시
+    }
+  };
+
   return (
     <div className="my-page">
       <Header logoText={logoText} />
@@ -29,10 +62,10 @@ function MyPage() {
         <div className="my-name">
           <div className="name-title">
             <p>이름 / 닉네임</p>
-            <p>30000 P</p>
+            <p>{point} P</p>
           </div>
           <div className="name-box">
-            <p>김덕우 / 쩝쩝박사</p>
+            <p>{username} / {nickname}</p>
             <Link to="/information">
               <button className="inform-modi-btn">수정</button>
             </Link>

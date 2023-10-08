@@ -25,6 +25,7 @@ const port = 5000;
 
 // Body 파서 설정
 app.use(bodyParser.json());
+app.use(cookieParser())
 // CORS 설정
 app.use(bodyParser.urlencoded({ extended:true}));
 app.use(cors());
@@ -51,10 +52,3 @@ app.listen(port, () => {
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', function(요청,응답){
-  응답.sendFile(path.join(__dirname, 'DDUKBAB-FRONT/build/index.html'));
-})
-app.get('*', function(요청, 응답){
-  응답.sendFile(path.join(__dirname, 'DDUKBAB-FRONT/build/index.html'));
-})
