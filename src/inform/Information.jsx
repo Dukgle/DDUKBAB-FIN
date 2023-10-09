@@ -15,7 +15,7 @@ function Information() {
     getInfo()
   }, []);
 
-  const infoChange = async (e) => {
+  const infoChange = async () => {
     try {
       const response = await axiosInstance.put('/users/nickname-update', {
         nickname: nickname
@@ -65,7 +65,7 @@ function Information() {
           <div className="name-title">
             <p>닉네임 변경</p>
           </div>
-          <form onSubmit={infoChange} className="inform-change-form" method="put">
+          <form className="inform-change-form" method="put">
             <div className="name-box">
               <input type="text" name="" id="username" className="input-field" placeholder="닉네임" value={nickname} onChange={(e) => setUsername(e.target.value)} required />
             </div>
@@ -74,7 +74,7 @@ function Information() {
                 <button className="change-none-btn">취소</button>
               </Link>
               <Link to="/MyPage">
-                <button type="submit" className="change-save-btn">저장</button>
+                <button type="submit" className="change-save-btn" onClick={infoChange}>저장</button>
                 </Link>
             </div>
           </form>
