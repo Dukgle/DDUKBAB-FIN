@@ -76,7 +76,7 @@ router.get('/get-everyone', (req, res) => {
   const { sort, menu } = req.query;
 
   // SQL 쿼리를 동적으로 생성합니다.
-  let query = 'SELECT users.nickname, posts.content, posts.star FROM posts join users where posts.user_id = users.user_id and posts.sort = ? AND posts.menu = ?';
+  let query = 'SELECT users.nickname, posts.content, posts.star, posts.created_at FROM posts join users where posts.user_id = users.user_id and posts.sort = ? AND posts.menu = ?';
 
   // "sort" 및 "menu"가 요청에 포함된 경우, 조건을 추가합니다.
   if (sort && menu) {
@@ -111,7 +111,7 @@ router.get('/get-everyone/latest', (req, res) => {
   const { sort, menu } = req.query;
 
   // SQL 쿼리를 동적으로 생성합니다.
-  let query = 'SELECT users.nickname, posts.content, posts.star FROM posts join users where posts.user_id = users.user_id and posts.sort = ? AND posts.menu = ?';
+  let query = 'SELECT users.nickname, posts.content, posts.star, posts.created_at FROM posts join users where posts.user_id = users.user_id and posts.sort = ? AND posts.menu = ?';
 
     // // "sort" 및 "menu"가 요청에 포함된 경우, 조건을 추가합니다.
     // if (sort && menu) {
@@ -200,8 +200,7 @@ router.get('/get-everyone/:postId', (req, res) => {
 router.post('/create', verifyToken, (req, res) => {
   const userId = req.userId;
   const { sort, menu, star, title, content } = req.body;
-  const createAt = new Date();
-
+  const createAt = new Date().toISOString().split('T')[0];
   const query = `INSERT INTO posts (user_id, sort, menu, star, title, content, created_at) VALUES (?,?,?,?,?,?,?)`;
 
   db.query(query, [userId, sort, menu, star, title, content, createAt], (err, result) => {

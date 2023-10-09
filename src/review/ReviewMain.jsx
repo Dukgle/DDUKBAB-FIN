@@ -135,21 +135,26 @@ function ReviewMain() {
                 </Link>
             </div>
 
-            {/* 리뷰 목록 */}
-            <div className="review-list">
-                {reviews.map((review) => (
-                    <Link to={`/review/${review.id}`} key={review.id}>
-                        <div className="review-item">
-                            <h3>{review.nickname}</h3>
-                            <p>{review.content}</p>
-                            <div className="star-rating">
-                                <img src={star} alt="Star" />
-                                <span>{review.star}</span>
-                            </div>
-                        </div>
-                    </Link>
-                ))}
-            </div>
+        {/* 리뷰 목록 */}
+        <div className="review-list">
+            {reviews.length === 0 ? (
+                <p>리뷰가 없습니다.</p>
+            ) : (
+        reviews.map((review) => (
+            <Link to={`/review/${review.id}`} key={review.id}>
+                <div className="review-item">
+                    <h3>{review.nickname} {review.created_at}</h3>
+                    <p>{review.content}</p>
+                    <div className="star-rating">
+                        <img src={star} alt="Star" />
+                        <span>{review.star}</span>
+                    </div>
+                </div>
+            </Link>
+        ))
+    )}
+</div>
+
         </div>
     );
 }

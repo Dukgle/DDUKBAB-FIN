@@ -14,9 +14,10 @@ function MyPage() {
   const [username, setName] = useState("");
   const [nickname, setNickname] = useState("");
   const [point, setPoint] = useState("");
+  const [seatData, setSeatNum] = useState("");
   useEffect(() => {
     // 페이지가 처음 렌더링될 때 사용자 정보를 가져오는 함수 호출
-    getInfo()
+    getInfo();
   }, []);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -36,19 +37,35 @@ function MyPage() {
       const userData = response.data.user_info; // 서버에서 받은 사용자 정보
       // console.log(userData)
       const { username, nickname, point} = userData; // 이름, 학번, 역할 추출
-  
-      // 추출한 데이터를 React 상태에 저장
-      // useState 훅을 사용하여 해당 상태 변수를 선언해야 합니다.
-      // 예: const [name, setName] = useState("");
-      // setName(name); // 이름 데이터 저장
       setName(username);
       setNickname(nickname);
       setPoint(point);
+
+      // 좌석 예약 정보 가져오기 (reservationId를 인자로 전달)
+      const reservationResponse = await axiosInstance.get(`/users/reservation/get`);
+      const seatData = reservationResponse.data.seat_name;
+      console.log(seatData)
+      setSeatNum(seatData);
         
       // 다른 필요한 정보도 위와 같은 방식으로 저장
   
     } catch (error) {
       console.error('사용자 정보 가져오기 오류', error.response.data);
+      // 오류 처리
+      // 예: 실패 메시지 표시
+    }
+  }
+
+  const seatDelete = async (e) => {
+    try {
+      const response = await axiosInstance.delete('/users/reservation/cancel');
+      setSeatNum("");
+
+      console.log('자리 예약 반납 성공', response.data);
+      // 닉네임 변경 성공 후 다른 작업 수행
+      // 예: 성공 메시지 표시, 리다이렉트 등
+    } catch (error) {
+      console.error('자리 예약 반납 오류', error.response.data);
       // 오류 처리
       // 예: 실패 메시지 표시
     }
@@ -100,18 +117,20 @@ function MyPage() {
         <div className="my-reservation">
           <div className="name-title">자리 예약 내역</div>
           <div className="reservation-box">
-            {/* 1. 예약 내역이 없는 경우 */}
-            {/* <p>예약된 내역이 없습니다.</p> */}
-
-            {/* 2. 예약 내역이 있는 경우 */}
-            <div className="my-seat" onClick={openModal}>
-              <div className="my-seat-text">
-                <p>내 자리</p>
-              </div>
-              <div className="my-seat-num">
-                <p>A-1</p>
-              </div>
-            </div>
+                      {seatData ? (
+                  // 2. 예약 내역이 있는 경우
+                  <div className="my-seat" onClick={openModal}>
+                    <div className="my-seat-text">
+                      <p>내 자리</p>
+                    </div>
+                    <div className="my-seat-num">
+                      <p>{seatData}</p>
+                    </div>
+                  </div>
+                ) : (
+                  // 1. 예약 내역이 없는 경우
+                  <p>예약된 내역이 없습니다.</p>
+                )}
             <div className="reserv-line"></div>
 
             {/* 2-1. 예약 후 아직 좌석 사용을 안 했을 경우 */}
@@ -129,7 +148,7 @@ function MyPage() {
                   <br />
                   이용중입니다.
                 </p>
-                <button className="reserv-back-btn">반납하기</button>
+                <button className="reserv-back-btn" onClick={seatDelete}>반납하기</button>
               </div>
             </div>
           </div>

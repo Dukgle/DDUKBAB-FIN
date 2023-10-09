@@ -6,24 +6,27 @@ const db = require('../config/dbConfig');
 
 
 function verifyToken(req, res, next) {
-    const token = req.headers.authorization.split(' ')[1];
-  //   console.log(token);
-  
-    if (!token) {
-      return res.status(401).json({ error: '인증 토큰이 없습니다' });
-    }
-  
-    jwt.verify(token, 'your-secret-key', (err, decoded) => {
-      if (err) {
-          console.log(err);
-        return res.status(401).json({ error: '인증 토큰이 유효하지 않습니다' });
-  
-      }
-      req.userId = decoded.userId; // JWT에 저장된 사용자 ID를 request 객체에 저장
-      req.role = decoded.role; // JWT에 저장된 사용자 역할을 request 객체에 저장
-      next();
-    });
+  // 헤더에서 인증 토큰을 추출
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(' ')[1]; // Bearer 다음의 토큰값
+  // console.log(token)
+  if (!token) {
+    return res.status(401).json({ error: '인증 토큰이 없습니다' });
   }
+
+  // 토큰 검증
+  jwt.verify(token, 'your-secret-key', (err, decoded) => {
+    if (err) {
+      console.error(err);
+      return res.status(401).json({ error: '인증 토큰이 유효하지 않습니다' });
+    }
+
+    // 토큰에서 추출한 정보를 request 객체에 저장
+    req.userId = decoded.userId; // 예시: 사용자 ID
+    req.role = decoded.role; // 예시: 사용자 역할
+    next();
+  });
+}
 
 // function checkAndUpdateReservations() {
 // const currentTime = moment();
@@ -52,13 +55,12 @@ function verifyToken(req, res, next) {
 // QR 찍힌 후 STATUS occupied로 변경
 
 // 예약 정보 및 남은 시간을 가져오는 엔드포인트
-router.get('/get/:reservationId', verifyToken, (req, res) => {
+router.get('/get', verifyToken, (req, res) => {
     const userId = req.userId;
-    const reservationId = req.params.reservationId;
   
-    const query = `SELECT seat_name, reservation_datetime FROM reservations WHERE reservation_id = ? AND user_id = ?`;
+    const query = `SELECT seat_name, reservation_datetime FROM reservations WHERE user_id = ?`;
   
-    db.query(query, [reservationId, userId], (err, result) => {
+    db.query(query, [ userId], (err, result) => {
       if (err) {
         console.error('예약 정보 조회 오류:', err);
         res.status(500).json({ error: '예약 정보 조회 실패' });
@@ -100,16 +102,15 @@ router.get('/get/:reservationId', verifyToken, (req, res) => {
     } else {
       // 남은 시간을 클라이언트에게 전달
       const seat_name = result[0].seat_name
+      console.log(seat_name)
       const seat_time = time
-      res.json({seat_name, seat_time});
+      res.json({seat_name});
     }
 
     });
   });
   
-  
-// 자리 예약 엔드포인트
-router.post('/reserve', verifyToken, (req, res) => {
+  router.post('/reserve', verifyToken, (req, res) => {
     const userId = req.userId;
     const { seat_name } = req.body;
   
@@ -121,6 +122,7 @@ router.post('/reserve', verifyToken, (req, res) => {
     // 자리 예약을 위해 자리 상태를 'reserved'로 업데이트
     const reserveQuery = `INSERT INTO reservations (user_id, seat_name, reservation_datetime) VALUES (?, ?, ?)`;
     const updateSeatStatusQuery = `UPDATE seats SET status='reserved' WHERE seat_name=?`;
+    const updateReservationPersonQuery = `UPDATE reservations SET reservation_person = JSON_ARRAY_APPEND(COALESCE(reservation_person, JSON_ARRAY()), '$', ?) WHERE seat_name=?`;
   
     db.beginTransaction((err) => {
       if (err) {
@@ -149,31 +151,43 @@ router.post('/reserve', verifyToken, (req, res) => {
             return;
           }
   
-          db.commit((err) => {
+          // reservation_person 열 업데이트
+          db.query(updateReservationPersonQuery, [userId, seat_name], (err, result) => {
             if (err) {
               db.rollback(() => {
-                console.error('트랜잭션 커밋 오류:', err);
+                console.error('reservation_person 열 업데이트 오류:', err);
                 res.status(500).json({ error: '자리 예약 실패' });
               });
               return;
             }
   
-            const successMessage = '자리 예약 성공';
-            res.json({ message: successMessage });
+            db.commit((err) => {
+              if (err) {
+                db.rollback(() => {
+                  console.error('트랜잭션 커밋 오류:', err);
+                  res.status(500).json({ error: '자리 예약 실패' });
+                });
+                return;
+              }
+  
+              const successMessage = '자리 예약 성공';
+              res.json({ message: successMessage });
+            });
           });
         });
       });
     });
   });
   
+  
   // 자리 예약 취소 엔드포인트
-  router.delete('/cancel/:reservationId', verifyToken, (req, res) => {
+  router.delete('/cancel', verifyToken, (req, res) => {
     const userId = req.userId;
-    const reservationId = req.params.reservationId;
+    // const reservationId = req.params.reservationId;
   
-    const getSeatNameQuery = `SELECT seat_name FROM reservations WHERE reservation_id=?`;
+    const getSeatNameQuery = `SELECT seat_name FROM reservations WHERE user_id=?`;
   
-    db.query(getSeatNameQuery, [reservationId], (err, result) => {
+    db.query(getSeatNameQuery, [userId], (err, result) => {
       if (err) {
         console.error('예약 정보 조회 오류:', err);
         res.status(500).json({ error: '자리 예약 취소 실패' });
@@ -198,9 +212,9 @@ router.post('/reserve', verifyToken, (req, res) => {
         }
   
         // 예약 취소
-        const cancelQuery = `DELETE FROM reservations WHERE reservation_id=? AND user_id=?`;
+        const cancelQuery = `DELETE FROM reservations WHERE user_id=?`;
   
-        db.query(cancelQuery, [reservationId, userId], (err, result) => {
+        db.query(cancelQuery, [ userId], (err, result) => {
           if (err) {
             db.rollback(() => {
               console.error('자리 예약 취소 오류:', err);

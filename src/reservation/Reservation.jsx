@@ -3,6 +3,7 @@ import Header from "../header/Header";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ResModal from "./ResModal";
+import axiosInstance from "../api";
 
 function Reservation() {
   const logoText = "좌석 예약";
@@ -11,6 +12,16 @@ function Reservation() {
 
   // 의자선택모달
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedTable, setSelectedTable] = useState(null); // 선택한 테이블 정보
+  const [selectedChair, setSelectedChair] = useState(null); // 선택한 의자 정보
+
+  const handleChairClick = (tableLabel, chairNumber) => {
+    setSelectedTable(tableLabel);
+    setSelectedChair(chairNumber);
+    openModal();
+  };
+  
+
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -36,42 +47,60 @@ function Reservation() {
     }
   }, [selectedOption, navigate]);
 
+  // API로 POST 요청 보내기
+  const handleReservation = async () => {
+    if (selectedTable && selectedChair) {
+      const seat_name = `${selectedTable}-${selectedChair}`;
+      try {
+        // axios를 사용하여 API를 호출합니다.
+        // API 호출이 성공하면 모달을 닫을 수 있습니다.
+        const response = await axiosInstance.post(`/users/reservation/reserve`, { seat_name });
+        closeModal(); // 모달 닫기
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+  };
+  
+
+
   // 테이블에 할당할 텍스트 배열
   const tableLabels = ["A", "B", "C", "D", "E", "F"];
 
-  // 테이블, 의자 배치
-  const tables = [];
-  for (let i = 0; i < 6; i++) {
-    tables.push(
-      <div key={i} className="table">
-        <div className="table-text">{tableLabels[i]}</div>
-        <div className="table-top-chairs">
-          <div className="chair" onClick={openModal}>
-            <div className="chair-seat">
-              <span>1</span>
-            </div>
-          </div>
-          <div className="chair" onClick={openModal}>
-            <div className="chair-seat">
-              <span>2</span>
-            </div>
-          </div>
+ // 테이블 및 의자 렌더링
+const tables = [];
+for (let i = 0; i < 6; i++) {
+  const tableLabel = tableLabels[i];
+
+  const topChairs = [];
+  const bottomChairs = [];
+
+  for (let j = 1; j <= 2; j++) {
+    topChairs.push(
+      <div key={j} className="chair" onClick={() => handleChairClick(tableLabel, j)}>
+        <div className="chair-seat">
+          <span>{j}</span>
         </div>
-        <div className="table-bottom-chairs">
-          <div className="chair" onClick={openModal}>
-            <div className="chair-seat">
-              <span>3</span>
-            </div>
-          </div>
-          <div className="chair" onClick={openModal}>
-            <div className="chair-seat">
-              <span>4</span>
-            </div>
-          </div>
+      </div>
+    );
+    bottomChairs.push(
+      <div key={j} className="chair" onClick={() => handleChairClick(tableLabel, j + 4)}>
+        <div className="chair-seat">
+          <span>{j + 2}</span>
         </div>
       </div>
     );
   }
+
+  tables.push(
+    <div key={i} className="table">
+      <div className="table-text">{tableLabel}</div>
+      <div className="table-top-chairs">{topChairs}</div>
+      <div className="table-bottom-chairs">{bottomChairs}</div>
+    </div>
+  );
+}
+
 
   return (
     <div className="reservation-page">
@@ -100,7 +129,7 @@ function Reservation() {
       </div>
 
       {/* 모달 렌더링 */}
-      <ResModal isOpen={modalIsOpen} closeModal={closeModal} content="1인석 모달" />
+      <ResModal isOpen={modalIsOpen} closeModal={closeModal} content="1인석 모달" handleReservation={handleReservation} />
 
       {/* 테이블 렌더링 */}
       <div className="tables-container-box">
