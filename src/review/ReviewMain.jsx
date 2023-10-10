@@ -141,9 +141,9 @@ function ReviewMain() {
                 <p>리뷰가 없습니다.</p>
             ) : (
         reviews.map((review) => (
-            <Link to={`/review/${review.id}`} key={review.id}>
+            <Link to={`/review/${review.post_id}`} key={review.post_id}>
                 <div className="review-item">
-                    <h3>{review.nickname} {review.created_at}</h3>
+                <h3>{`${review.nickname} ${review.created_at.split('T')[0]}`}</h3>
                     <p>{review.content}</p>
                     <div className="star-rating">
                         <img src={star} alt="Star" />

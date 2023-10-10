@@ -175,7 +175,7 @@ function App() {
         <Route path="/mypage/point" element={<Point />} /> {/* 포인트창 */}
         <Route path="/review" element={<ReviewMain />} />
         <Route path="/reviewwrite" element={<ReviewWrite />} />
-        <Route path="/review/:id" element={<ReviewDetail />} />
+        <Route path="/review/:post_id" element={<ReviewDetail />} />
         <Route path="/reservation" element={<Reservation />} /> {/* 자리 예약 */}
         <Route path="/twofourpage" element={<TwoFourPage />} />
         <Route path="/resmodal" element={<ResModal />} />

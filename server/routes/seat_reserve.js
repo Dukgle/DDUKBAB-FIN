@@ -102,9 +102,10 @@ router.get('/get', verifyToken, (req, res) => {
     } else {
       // 남은 시간을 클라이언트에게 전달
       const seat_name = result[0].seat_name
-      console.log(seat_name)
       const seat_time = time
-      res.json({seat_name});
+      console.log(seat_name, seat_time)
+
+      res.json({seat_name, seat_time});
     }
 
     });

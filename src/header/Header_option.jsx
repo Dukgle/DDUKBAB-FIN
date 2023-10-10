@@ -4,18 +4,23 @@ import axiosInstance from "../api";
 
 import CartIcon from "../icon/icon-shopping-cart.png";
 import ListIcon from "../icon/icon-ui.png";
-
-import Cart from "../cart/Cart";
+import QrIcon from '../icon/icon-qr-code.png';
 import Qr from "./Qr";
 import Dropdown from "./Dropdown";
 
 function Header_option({ logoText }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isDropdownView, setDropdownView] = useState(false);
   const [nickname, setNickname] = useState("");
   useEffect(() => {
     // 페이지가 처음 렌더링될 때 사용자 정보를 가져오는 함수 호출
     getNickname()
   }, []);
+
+    
+  const openModal = () => {
+    setModalIsOpen(true);       // 모달창이 열릴 수 있는 상태
+};
 
   const handleClickContainer = () => {
     setDropdownView(!isDropdownView);
@@ -58,26 +63,6 @@ function Header_option({ logoText }) {
           {nickname}
         </div>
         <div className="logo">{logoText}</div>
-        <div className="icon-wrap">
-          <div className="icon">
-            <div className="cart">
-              <div className="cart-button">
-                <Link to="/cart">
-                  <img src={CartIcon} alt="Cart" />
-                </Link>
-              </div>
-            </div>
-            <div className="qr">
-              <Qr />
-            </div>
-            <div className="list" onBlur={handleBlurContainer}>
-              <button className="list-button" onClick={handleClickContainer}>
-                <img src={ListIcon} alt="List" />
-                {isDropdownView && <Dropdown />}
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </header>
   );

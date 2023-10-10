@@ -111,7 +111,7 @@ router.get('/get-everyone/latest', (req, res) => {
   const { sort, menu } = req.query;
 
   // SQL 쿼리를 동적으로 생성합니다.
-  let query = 'SELECT users.nickname, posts.content, posts.star, posts.created_at FROM posts join users where posts.user_id = users.user_id and posts.sort = ? AND posts.menu = ?';
+  let query = 'SELECT users.nickname, posts.post_id, posts.content, posts.star, posts.created_at FROM posts join users where posts.user_id = users.user_id and posts.sort = ? AND posts.menu = ?';
 
     // // "sort" 및 "menu"가 요청에 포함된 경우, 조건을 추가합니다.
     // if (sort && menu) {
@@ -171,16 +171,15 @@ router.get('/get-everyone/star', (req, res) => {
 
 
 // 모두가 확인 가능(일부 게시)
-router.get('/get-everyone/:postId', (req, res) => {
-  // "sort"와 "menu" 값을 요청에서 추출합니다.
-  const postId = req.params.postId;
-  const { sort, menu } = req.body;
+router.get('/get-one', (req, res) => {
+  // "post_id" 값을 요청에서 추출합니다.
+  const postId = req.query.post_id; // 혹은 req.params.post_id, 둘 중 하나 사용
 
   // SQL 쿼리를 동적으로 생성합니다.
-  let query = 'SELECT posts.post_id,posts.title, users.nickname, posts.sort, posts.menu, posts.star, posts.content, posts.created_at, posts.likes FROM posts join users where posts.user_id = users.user_id and posts.sort = ? AND posts.menu = ? AND posts.post_id = ?';
+  let query = 'SELECT posts.title, users.nickname, posts.\`sort\`, posts.menu, posts.star, posts.content, posts.created_at, posts.likes FROM posts join users where posts.user_id = users.user_id AND posts.post_id = ?';
 
   // 데이터베이스 쿼리를 실행합니다.
-  db.query(query, [sort, menu, postId], (err, result) => {
+  db.query(query, [postId], (err, result) => {
     if (err) {
       console.error('게시글 조회 오류:', err);
       res.status(500).json({ error: '게시글 조회 실패' });
@@ -190,10 +189,11 @@ router.get('/get-everyone/:postId', (req, res) => {
       res.status(404).json({ error: '게시글을 찾을 수 없습니다' });
       return;
     }
-    const post = result;
+    const post = result[0];
     res.json({ post });
   });
 });
+
 
 
 // 게시글 작성 엔드포인트

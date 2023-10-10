@@ -71,12 +71,17 @@ function Qr() {
 
     return (
         <>
-            <CustomModal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="QR Code Modal" className="qr-modal-container">
-          <h4>예약한 좌석</h4>
-          <h1>{selectedSeat}</h1>
-          <h4>남은 시간 : {reservationDatetime}</h4>
-          {qrCodeData && <img src={qrCodeData} alt="QR Code" />}
-        </CustomModal>
+            <CustomModal // CustomModal 컴포넌트 사용
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="QR Code Modal"
+                className="qr-modal-container"
+            >
+                <h4>예약한 좌석</h4>
+                <h1>{selectedSeat}</h1>
+                <h4>남은 시간 : {reservationDatetime}</h4>
+                {qrCodeData && <img src={qrCodeData} alt="QR Code" />}
+            </CustomModal>
         </>
     );
 }
