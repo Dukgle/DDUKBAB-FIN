@@ -47,6 +47,21 @@ function Cart() {
     }
   };
 
+  
+  const pointUpdate = async (e) => {
+    try {
+      const response = await axiosInstance.delete('/user/point-update');
+
+      console.log('자리 예약 반납 성공', response.data);
+      // 닉네임 변경 성공 후 다른 작업 수행
+      // 예: 성공 메시지 표시, 리다이렉트 등
+    } catch (error) {
+      console.error('자리 예약 반납 오류', error.response.data);
+      // 오류 처리
+      // 예: 실패 메시지 표시
+    }
+  };
+
     return (
         <div className="cart-page">
             <Header logoText={logoText} />
@@ -64,7 +79,8 @@ function Cart() {
                 <button
                 className='order-button'
                 onClick={() => {
-                    getTotal(); // 주문 버튼 클릭 시 getTotal 함수 실행
+                    getTotal(); // 주문 버튼 클릭 시 getTotal 함수 실
+                    pointUpdate();
                     openModal(); // 모달 열기
                 }}
                 >

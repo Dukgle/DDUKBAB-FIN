@@ -82,4 +82,55 @@ router.post('/mypage/charge/point', (req, res) => {
     });
 });
 
+router.put('/point-update', (req, res) => {
+  const params = req.body.params;
+  const amount = params.amount;
+  const uni_num = params.uni_num;
+  
+  // 현재 사용자의 포인트 가져오는 쿼리
+  const getPointQuery = 'SELECT point FROM users WHERE uni_num = ?';
+
+  db.query(getPointQuery, [uni_num], (err, result) => {
+    if (err) {
+      console.error('포인트 조회 오류:', err);
+      res.status(500).json({ error: '포인트 조회 실패' });
+      return;
+    }
+
+    if (result.length === 0) {
+      res.status(404).json({ error: '사용자를 찾을 수 없습니다' });
+      return;
+    }
+
+    const userPoint = result[0].point;
+
+    // 충분한 포인트가 있는지 확인
+    if (userPoint < pointToDeduct) {
+      res.status(400).json({ error: '포인트가 부족합니다' });
+      return;
+    }
+
+    // 포인트 차감 후 업데이트하는 쿼리
+    const updatePointQuery = 'UPDATE users SET point = ? WHERE id = ?';
+    const updatedPoint = userPoint -amount;
+
+    db.query(updatePointQuery, [updatedPoint, uni_num], (err, result) => {
+      if (err) {
+        console.error('포인트 업데이트 오류:', err);
+        res.status(500).json({ error: '포인트 업데이트 실패' });
+        return;
+      }
+
+      if (result.affectedRows === 0) {
+        res.status(404).json({ error: '포인트 업데이트 실패' });
+        return;
+      }
+
+      // 포인트 업데이트가 성공하면 응답
+      res.json({ message: '포인트가 성공적으로 깎였습니다' });
+    });
+  });
+});
+
+
 module.exports = router;
