@@ -49,12 +49,6 @@ function ReviewDetail() {
     reviewGet();
 }, [post_id]);
 
-// useEffect(() => {
-//   // isLiked 값이 변경될 때마다 같은 작성자의 리뷰 목록을 가져옵니다.
-//   if (isLiked) {
-//     getAuthorReviews();
-//   }
-// }, [isLiked]);
 
   console.log(post_id)
 
