@@ -94,10 +94,10 @@ const toggleLike = async () => {
           <span>{review.star}</span>
         </div>
         <p className="review-content">{review.content}</p>
-        <div className="like" onClick={toggleLike}>
+        {/* <div className="like" onClick={toggleLike}>
           <img src={isLiked ? like : likeempty} alt="Like" style={{ width: "20px", height: "20px" }} />
           <span>{review.likes}</span>
-        </div>
+        </div> */}
         <button className="review-back-button" onClick={goBack}>
           뒤로 가기
         </button>

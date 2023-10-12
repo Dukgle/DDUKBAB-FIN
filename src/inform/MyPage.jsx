@@ -21,14 +21,14 @@ function MyPage() {
   const [modalMessage, setModalMessage] = useState("");
   const [id, setID] = useState("");
 
-  // useEffect(() => {
-  //   // 페이지가 처음 렌더링될 때 사용자 정보를 가져오는 함수 호출
-    
-  // }, []);
+  useEffect(() => {
+    // 페이지가 처음 렌더링될 때 사용자 정보를 가져오는 함수 호출
+    getNum();
+    getInfo();
+  }, []);
 
   useEffect(() => {
-    getInfo();
-    getNum();
+ 
     // If the modal is open, start fetching seat_time every 1 second
     if (modalIsOpen) {
       const intervalId = setInterval(() => {
@@ -79,6 +79,7 @@ function MyPage() {
     const response = await axiosInstance.get('/users/order/order-num'); // API 엔드포인트를 적절하게 수정
 
     const userData = response.data.wait_num; // 서버에서 받은 사용자 정보
+    console.log(userData)
     const {id} = userData; // 이름, 학번, 역할 추출
     setID(id)
 
@@ -261,7 +262,7 @@ function MyPage() {
                       <p>주문번호</p>
                     </div>
                     <div className="my-seat-num">
-                      <p>             {id}</p>
+                      <p>{id}</p>
                     </div>
                   </div>
                 ) : (

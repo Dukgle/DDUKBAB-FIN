@@ -29,6 +29,27 @@ function verifyToken(req, res, next) {
   
     const query = `SELECT id FROM orders WHERE user_id = ? `;
   
+    db.query(query, [userId], (err, result) => {
+      if (err) {
+        console.error('번호표 조회 오류:', err);
+        res.status(500).json({ error: '번호표 조회 실패' });
+        return;
+      }
+      if (result.length === 0) {
+        res.status(404).json({ error: '번호표를 찾을 수 없습니다' });
+        return;
+      }
+      const wait_num = result[result.length - 1];
+      res.json({ wait_num });
+    });
+  });
+  
+  router.get('/order-num', verifyToken, (req, res) => {
+    const userId = req.userId;
+    const createdAt = new Date().toISOString().split('T')[0];
+  
+    const query = `SELECT id FROM orders WHERE user_id = ? `;
+  
     db.query(query, [userId, createdAt], (err, result) => {
       if (err) {
         console.error('번호표 조회 오류:', err);
