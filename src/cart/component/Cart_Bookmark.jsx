@@ -24,9 +24,9 @@ function Cart_Bookmark({ bookmark_menus }) {
                                 {groupedMenus[store_name].map((menu) => (
     
                                     <div key={menu.menu_id} className='bookmark-item'>
-                                        <div className='cart-bookmarkIcon'>
+                                        {/* <div className='cart-bookmarkIcon'>
                                             <BookmarkButton menu_name={menu.menu_name}/>
-                                        </div>
+                                        </div>*/}
                                         <div className='bookmark-item-wrap'>
                                             <div className='bookmark-menu-name'>
                                                 {menu.menu_name}
