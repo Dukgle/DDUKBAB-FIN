@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 
-function QuantityCheck() {
-    const [amount, setQuantity] = useState(1);
+function QuantityCheck({ onAmountChange}) {
+    const [amount, setAmount] = useState(1);
 
     const handleIncrement = () => {
-        setQuantity(amount + 1);
+        setAmount(amount + 1);
+        onAmountChange(amount + 1); // 수량 변경 시 콜백 함수 호출
     };
 
     const handleDecrement = () => {
         if (amount > 1) {
-        setQuantity(amount - 1);
+            setAmount(amount - 1);
+            onAmountChange(amount - 1); // 수량 변경 시 콜백 함수 호출
         }
     };
 

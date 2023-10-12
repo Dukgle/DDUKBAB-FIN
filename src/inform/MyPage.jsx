@@ -18,6 +18,7 @@ function MyPage() {
   const [qrCodeData, setQRCodeData] = useState("");
   const [selectedSeat, setSelectedSeat] = useState("");
   const [reservationDatetime, setReservationDatetime] = useState("");
+  const [modalMessage, setModalMessage] = useState("");
 
   useEffect(() => {
     // 페이지가 처음 렌더링될 때 사용자 정보를 가져오는 함수 호출
@@ -121,14 +122,20 @@ function MyPage() {
     // 남은 시간을 초로 계산
     const remainingTimeInSeconds = minutes * 60 + seconds;
 
-    // 시간이 0이 되었을 때 예약 삭제
     if (remainingTimeInSeconds === 0) {
+      // 남은 시간이 0이 되면 모달 메시지를 설정
+      setModalMessage("10분이 지나 자리 예약이 취소되었습니다.");
       await seatDelete();
+    } else if (remainingTimeInSeconds <= 600) {
+      // 10분 이하로 남으면 모달 메시지를 설정
+      setModalMessage("10분이 지나 자리 예약이 취소됩니다.");
+    } else {
+      setModalMessage(""); // 모달 메시지 초기화
     }
-    } catch (error) {
-      console.error('Error generating seat_time', error);
-      // Handle the error as needed
-    }
+  } catch (error) {
+    console.error('Error generating seat_time', error);
+    // 오류 처리
+  }
   };
 
   const logout = async (e) => {
@@ -214,10 +221,17 @@ function MyPage() {
                 </div>
                 </div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="QR Code Modal" className="qr-modal-container">
-          <h4>예약한 좌석</h4>
+                <h4>예약한 좌석</h4>
           <h1>{selectedSeat}</h1>
           <h4>남은 시간 : {reservationDatetime}</h4>
-          {qrCodeData && <img src={qrCodeData} alt="QR Code" />}
+          {reservationDatetime !== "0:00" && qrCodeData && (
+            <>
+              <img src={qrCodeData} alt="QR Code" />
+            </>
+          )}
+          {reservationDatetime === "0:00" && (
+            <p>10분이 지나 자리 예약이 취소되었습니다.</p>
+          )}
         </Modal>
 
         <div className="my-food">

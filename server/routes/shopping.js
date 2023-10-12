@@ -30,7 +30,7 @@ function verifyToken(req, res, next) {
     const userId = req.userId;
     const query = `SELECT m.store_name,
                     CONCAT('[', GROUP_CONCAT(
-                        JSON_OBJECT('menu_name', s.menu_name, 'image_path', m.image_path)
+                        JSON_OBJECT('menu_name', s.menu_name, 'image_path', m.image_path, 'amount', s.amount)
                     ), ']') AS menu_names
                     FROM shopping s
                     JOIN menu m ON s.menu_name = m.menu_name
@@ -99,7 +99,7 @@ function verifyToken(req, res, next) {
 
   router.post('/order-select', verifyToken, (req, res) => {
     const userId = req.userId;
-    const menu_name = req.params.name;
+    const menu_name = req.body.menu_name;
     const amount = req.body.amount;
 
     console.log(menu_name, amount);

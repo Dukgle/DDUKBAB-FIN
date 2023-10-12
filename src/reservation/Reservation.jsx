@@ -8,7 +8,7 @@ import axiosInstance from "../api";
 function Reservation() {
   const logoText = "좌석 예약";
   const [selectedOption, setSelectedOption] = useState("");
-  const dropdownOptions = ["1인석", "2인석, 4인석"];
+  // const dropdownOptions = ["1인석", "2인석, 4인석"];
 
   // 의자선택모달
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -107,14 +107,14 @@ for (let i = 0; i < 6; i++) {
       <Header logoText={logoText} />
       <div className="reserv-select-content">
         <div>
-          <select id="reserv-select" value={selectedOption} onChange={handleDropdownChange}>
+          {/* <select id="reserv-select" value={selectedOption} onChange={handleDropdownChange}>
             <option value="">좌석 이용 인원 ▼</option>
             {dropdownOptions.map((option, index) => (
               <option key={index} value={option}>
                 {option}
               </option>
             ))}
-          </select>
+          </select> */}
         </div>
         <div className="reserv-content">
           <div className="reserv-content-box">

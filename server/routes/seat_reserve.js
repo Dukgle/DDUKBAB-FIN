@@ -28,32 +28,6 @@ function verifyToken(req, res, next) {
   });
 }
 
-// function checkAndUpdateReservations() {
-// const currentTime = moment();
-// const fiveMinutesAgo = moment().subtract(5, 'minutes');
-
-// const query = `
-//     UPDATE reservations
-//     SET status = 'available'
-//     WHERE status = 'reserved' AND reservation_datetime <= ?;
-// `;
-
-// db.query(query, [fiveMinutesAgo.format('YYYY-MM-DD HH:mm:ss')], (err, result) => {
-//     if (err) {
-//     console.error('예약 업데이트 오류:', err);
-//     return;
-//     }
-//     if (result.affectedRows > 0) {
-//     console.log('예약이 5분 이상 경과하여 좌석이 다시 사용 가능 상태로 변경되었습니다.');
-//     }
-// });
-// }
-
-// 일정 간격으로 checkAndUpdateReservations 함수 호출
-// setInterval(checkAndUpdateReservations, 60000); // 60초마다 실행 (1분)
-
-// QR 찍힌 후 STATUS occupied로 변경
-
 // 예약 정보 및 남은 시간을 가져오는 엔드포인트
 router.get('/get', verifyToken, (req, res) => {
     const userId = req.userId;

@@ -12,20 +12,23 @@ import BookmarkButton from '../bookmark/Bookmark';
 function Butter() {
     const logoText = "마성떡볶이";
 
-    const  {name} = useParams();
-    
+    const menuName = "버터장조림덮밥"
     const [amount, setAmount] = useState(1);
+
 
     const shoppingPost = async (e) => {
         try {
-            const response = await axiosInstance.post(`users/shopping/order-select?menu_name=${name}`, {
-                menu_name:name,
-                amount:amount
+
+            // 이름과 수량을 사용하여 POST 요청을 보냅니다.
+            const response = await axiosInstance.post('users/shopping/order-select', {
+                menu_name: menuName,
+                amount: amount,
             });
-            console.log(name, amount)
-            } catch (error) {
-            console.error('장바구니 처리 오류', error.response.data.error);
-        }
+            console.log('장바구니 추가 성공', response.data);
+
+    } catch (error) {
+        console.error('장바구니 처리 오류:', error.response.data.error);
+    }
     };
 
     return (
@@ -54,7 +57,7 @@ function Butter() {
                 <img src={image_net} alt='사진' width='340' height='215' />
             </div>
             <div className='option-quantity'>
-                <QuantityCheck amount={amount} setAmount={setAmount}/>
+                <QuantityCheck onAmountChange={setAmount}/>
             </div>
             <div className="option-quantity-bottom-gap"></div>
             <div className='option-cart-button-wrap'>
