@@ -1,76 +1,80 @@
 .menu-inform-wrap {
-    padding: 10px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    border: 1px solid #40003A;
-    color: black;
-    border-radius: 5px;
+  padding: 10px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border: 1px solid #40003a;
+  color: black;
+  border-radius: 5px;
 }
 
 .bookmarkIcon {
-    display: block;
-    padding: 10px;
-    float: right;
+  display: block;
+  padding: 10px;
+  float: right;
 }
 
 .menu-img {
-    display: inline-block;
+  display: inline-block;
 }
 
 .menu-menu-img {
-    width: 200px;
-    height: 140px;
+  width: 200px;
+  height: 140px;
 }
 
 .option-quantity-bottom-gap {
-    height: 100px;
+  height: 100px;
+}
+
+.option-cart-button-wrap {
+  display: flex;
+  justify-content: center;
+  width: calc(80vw - 20px);
 }
 
 .option-cart-button {
-    width: calc(80vw - 20px);
-    margin-top: 20px;
-    padding: 5px 10px;
-    position: fixed;
-    text-align: center;
-    margin: 30px;
-    padding: 10px;
-    border-radius: 25px;
-    border: 2px solid #FCCB6F;
-    height: 50px;
+  margin-top: 20px;
+  padding: 5px 10px;
+  position: fixed;
+  text-align: center;
+  /* margin: 30px; */
+  padding: 10px;
+  border-radius: 25px;
+  border: 2px solid #fccb6f;
+  height: 50px;
 }
 
 .infrom-text {
-    display: inline-block;
-    vertical-align: top;
-    padding-left: 20px;
-    padding-top: 30px;
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 20px;
+  padding-top: 30px;
 }
 
 .menu-name {
-    font-weight: bolder;
-    font-size: large;
-    text-align: center;
+  font-weight: bolder;
+  font-size: large;
+  text-align: center;
 }
 
 .menu-price {
-    text-align: center;
+  text-align: center;
 }
 
 .nutrient-img {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .chart {
-    display: inline-block;
+  display: inline-block;
 }
 
 #gap {
-    height: 15px;
+  height: 15px;
 }
 
-
 @media (hover: hover) {
-    .option-cart-button {
-      width: calc(390px * 0.8 - 20px);
-    }
+  .option-cart-button {
+    width: calc(390px * 0.8 - 20px);
+  }
 }
