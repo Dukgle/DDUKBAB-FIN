@@ -66,7 +66,7 @@
 .writeBtn {
     position: relative;
     left: 75%;
-    top: -20px;
+    top: -33px;
 }
 
 .btnText {
@@ -115,16 +115,17 @@
 
 
 .star-rating img {
-    position: relative;
-    top: 0; 
     width: 20px;
+    display: inline-block; /* 이미지를 인라인 블록으로 변경하여 수평 정렬 */
 }
 
-
 .star-rating span {
-    position: relative;
-    top: 0; 
-    margin-bottom: 20px;
-    margin-left: 7px; 
-    font-weight: 600; 
+    font-weight: 600;
+    display: inline-block; /* 별점을 인라인 블록으로 변경하여 수평 정렬 */
+    margin-bottom: 0; /* 별점 아래 여백 제거 */
+    margin-right: 7px; /* 별과 별점 사이의 간격 추가 */
+}
+
+.time {
+
 }

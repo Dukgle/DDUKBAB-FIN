@@ -35,9 +35,11 @@ function Cart() {
             <CartMenu cart_menus={cart_menus} />
 
             <Link to={cart_menus.length === 0 ? '#' : '/order'}>
-                <button className='order-button' style={{ ...bottonStyle, backgroundColor: cart_menus.length === 0 ? '#FFFFFF' : '#FCCB6F' }}>
-                    주문하기
-                </button>
+                <div className='order-button-div'>
+                    <button className='order-button' style={{ ...bottonStyle, backgroundColor: cart_menus.length === 0 ? '#FFFFFF' : '#FCCB6F' }}>
+                        <p>주문하기</p>
+                    </button>
+                </div>
             </Link>
         </div>
     );

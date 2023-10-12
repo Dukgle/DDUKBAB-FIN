@@ -36,9 +36,6 @@
   cursor: pointer;
 }
 
-.back-button:hover {
-  background-color: #fccb6f;
-}
 
 .like {
   width: 20px;

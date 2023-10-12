@@ -70,7 +70,7 @@ function Header({ logoText }) {
                 <div className="cart-button">
                   <Link to="/cart">
                     {Cart}
-                    <img src={CartIcon} alt="Cart" />
+                    <img src={CartIcon} className="header-cart-button-icon" alt="Cart" />
                   </Link>
                 </div>
               </div>

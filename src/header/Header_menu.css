@@ -101,6 +101,7 @@ header {
   width: 24px;
   height: 24px;
   padding: 10px;
+  margin: 0px;
   padding-right: 0;
   display: inline-block;
 }
@@ -109,6 +110,7 @@ header {
   width: 24px;
   height: 24px;
   padding: 10px;
+  margin: 0px;
   padding-right: 0;
   display: inline-block;
 }

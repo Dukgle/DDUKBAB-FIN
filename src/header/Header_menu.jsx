@@ -67,6 +67,31 @@ function Header_menu({ logoText }) {
         {/* 나중에 연결 */}
         <div className="logo-page" style={{ marginTop: "0" }}>
           <div className="logo">{logoText}</div> {/* 페이지 이름 */}
+          <div className="icon-wrap">
+            <div className="icon">
+              {/* 아이콘 모음 */}
+              <div className="cart">
+                {/* 장바구니 */}
+                <div className="cart-button">
+                  <Link to="/cart">
+                    {Cart}
+                    <img src={CartIcon} className="header-cart-button-icon" alt="Cart" />
+                  </Link>
+                </div>
+              </div>
+              <div className="qr">
+                {/* QR코드 */}
+                <Qr /> {/* 모달창 띄우는 컴포넌트 */}
+              </div>
+              <div className="list" onBlur={handleBlurContainer}>
+                {/* 메뉴 드롭다운_onBlur 사용 */}
+                <button className="list-button" onClick={handleClickContainer}>
+                  <img src={ListIcon} className="header-list-button-icon" alt="List" />
+                  {isDropdownView && <Dropdown />}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>

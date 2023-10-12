@@ -8,6 +8,11 @@
     color: black;
 }
 
+.today-nutrient-img {
+    width: 370px;
+    height: 220px;
+}
+
 a {
     text-decoration: none;
 }

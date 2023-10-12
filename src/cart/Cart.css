@@ -1,5 +1,5 @@
 [class*="page-button"] {
-    width: 38%;
+    width: 40%;
     margin: 5px;
     margin-left: 0px;
     padding: 5px;
@@ -59,42 +59,61 @@
     float: right;
 }
 
+
+.cart-total {
+    text-align: center;
+    margin: 40px;
+    padding: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 70px;
+}
+
 .order-button {
+    width: calc(80vw - 20px);
+    margin-top: 20px;
+    padding: 5px 10px;
     position: fixed;
     text-align: center;
-    background-color: #FCCB6F;
     margin: 30px;
     padding: 10px;
     border-radius: 25px;
     border: 2px solid #FCCB6F;
-    left: 0;
-    right: 0;
-    bottom: 0;
     height: 50px;
 }
 
-.cart-total {
-    position: fixed;
+.order-button-div {
+    display: flex;
     text-align: center;
-    margin: 80px;
-    padding: 10px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 50px;
 }
 
 .pay-button {
+    width: calc(80vw - 20px);
+    align-items: center;
+    margin-top: 20px;
+    padding: 5px 10px;
     position: fixed;
     text-align: center;
-    background-color: #FCCB6F;
     margin: 30px;
     padding: 10px;
     border-radius: 25px;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    border: 2px solid #FCCB6F;
     height: 50px;
+}
+
+.pay-button-div {
+    display: flex;
+}
+
+@media (hover: hover) {
+    .pay-button {
+      width: calc(390px * 0.8 - 20px);
+    }
+
+    .order-button {
+        width: calc(390px * 0.8 - 20px);
+    }
 }
 
 .ReactModal__Overlay {

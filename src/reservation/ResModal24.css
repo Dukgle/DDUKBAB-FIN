@@ -1,0 +1,63 @@
+/* ResModal.css */
+.ResModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .ModalContent {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 70%;
+    margin: 0 auto; /* 수평 가운데 정렬 */
+  }
+  
+  h1 {
+    font-size: 30px;
+    margin: 0 0 10px;
+  }
+  
+  h2 {
+    font-size: 18px;
+    margin: 0 0 20px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin: 0 0 10px;
+  }
+  
+  .stdnum {
+    width: 90%;
+    max-width: 300px; /* 최대 너비를 300px로 제한 */
+    margin: 0 auto;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    display: block; /* 블록 요소로 설정 */
+    box-sizing: border-box; /* 너비가 가득 차도록 설정 */
+    width: 100%;
+  }
+  
+  .res {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #FCCB6F;
+  }
+  

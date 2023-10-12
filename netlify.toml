@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/api"
+  to = "https://ddukbab-160bd6fc13f3.herokuapp.com/api/:splat"
+  status = 200
+  force = true

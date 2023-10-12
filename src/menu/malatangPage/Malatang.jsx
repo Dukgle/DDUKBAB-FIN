@@ -27,7 +27,7 @@ function Malatang() {
         {menus.map((m, i) => (
           <div className="menu-container">
             <div className="bookmarkIcon">
-              <BookmarkButton menu_name={m.name}/>
+              <BookmarkButton />
             </div>
             <React.Fragment key={m.name}>
               <Link to={`/menu/${m.name}`}>

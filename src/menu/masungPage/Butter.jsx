@@ -41,7 +41,7 @@ function Butter() {
             <Link to="/optionMasung">
                 <div className='menu-inform-wrap'>
                     <div className='menu-img'>
-                        <img src={image} alt='사진' width='130' height='110' />
+                        <img src={image} alt='사진' class='menu-menu-img' width='130' height='110' />
                     </div>
                     <div className='infrom-text'>
                         <div className='menu-name'>
@@ -54,7 +54,7 @@ function Butter() {
                 </div>
             </Link>
             <div className='nutrient-img'>
-                <img src={image_net} alt='사진' width='340' height='215' />
+                <img src={image_net} alt='사진' class='today-nutrient-img' width='340' height='215' />
             </div>
             <div className='option-quantity'>
                 <QuantityCheck onAmountChange={setAmount}/>

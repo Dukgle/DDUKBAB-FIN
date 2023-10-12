@@ -21,6 +21,9 @@ import ResModal24 from "./reservation/ResModal24";
 import ReviewMain from "./review/ReviewMain";
 import ReviewWrite from "./review/ReviewWrite";
 import ReviewDetail from "./review/ReviewDetail";
+import MyReview from "./review/MyReview";
+import MyReviewDetail from "./review/MyReviewDetail";
+import ReviewEdit from "./review/ReviewEdit";
 
 import Cart from "./cart/Cart";
 import CartBookmark from "./cart/CartBookmark";
@@ -175,7 +178,12 @@ function App() {
         <Route path="/mypage/point" element={<Point />} /> {/* 포인트창 */}
         <Route path="/review" element={<ReviewMain />} />
         <Route path="/reviewwrite" element={<ReviewWrite />} />
+        <Route path="/review" element={<ReviewMain />} />
+        <Route path="/reviewwrite" element={<ReviewWrite />} />
         <Route path="/review/:post_id" element={<ReviewDetail />} />
+        <Route path="/myreview/" element={<MyReview />} />
+        <Route path="/myreview/:id/myreviewdetail" element={<MyReviewDetail />} />
+        <Route path="/myreview/:id/myreviewdetail/reviewedit" element={<ReviewEdit />} />
         <Route path="/reservation" element={<Reservation />} /> {/* 자리 예약 */}
         <Route path="/twofourpage" element={<TwoFourPage />} />
         <Route path="/resmodal" element={<ResModal />} />

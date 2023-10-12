@@ -1,0 +1,37 @@
+/* ReviewEdit.css */
+
+.review-edit-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.review-edit-content {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+textarea {
+  height: 150px;
+}

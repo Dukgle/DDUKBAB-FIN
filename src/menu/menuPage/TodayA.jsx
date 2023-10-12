@@ -47,7 +47,7 @@ function TodayA() {
                                 </div>
                             </Link>
                             <div className='nutrient-img'>
-                                <img src={image_net} alt='사진' width='340' height='215' />
+                                <img src={image_net} class='today-nutrient-img' alt='사진' />
                             </div>
                         </div>
                     ))}
