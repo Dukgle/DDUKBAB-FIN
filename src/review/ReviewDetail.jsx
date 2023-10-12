@@ -56,7 +56,7 @@ function ReviewDetail() {
 //   }
 // }, [isLiked]);
 
-  // console.log(post_id)
+  console.log(post_id)
 
   const reviewGet = async () => {
     try {
