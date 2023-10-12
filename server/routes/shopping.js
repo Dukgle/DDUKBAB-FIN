@@ -28,15 +28,10 @@ function verifyToken(req, res, next) {
 
   router.get('/order-get', verifyToken, (req, res) => {
     const userId = req.userId;
-    const query = `SELECT m.store_name,
-                    CONCAT('[', GROUP_CONCAT(
-                        JSON_OBJECT('menu_name', s.menu_name, 'image_path', m.image_path, 'amount', s.amount)
-                    ), ']') AS menu_names
-                    FROM shopping s
-                    JOIN menu m ON s.menu_name = m.menu_name
-                    WHERE s.user_id = ?
-                    GROUP BY m.store_name;
-`;
+    const query = `SELECT m.store_name, s.id, s.menu_name, m.image_path, s.amount, s.total_price
+    FROM shopping s
+    JOIN menu m ON s.menu_name = m.menu_name
+    WHERE s.user_id = ?`;
   
     db.query(query, [userId], (err, result) => {
       if (err) {
