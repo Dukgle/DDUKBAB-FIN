@@ -8,7 +8,7 @@ import ListIcon from "../icon/icon-ui.png";
 
 import Cart from "../cart/Cart";
 import Qr from "./Qr";
-import QrIcon from '../icon/icon-qr-code.png';
+import QrIcon from "../icon/icon-qr-code.png";
 import Dropdown from "./Dropdown";
 
 function Header_menu({ logoText }) {
@@ -17,13 +17,12 @@ function Header_menu({ logoText }) {
   const [nickname, setNickname] = useState("");
   useEffect(() => {
     // 페이지가 처음 렌더링될 때 사용자 정보를 가져오는 함수 호출
-    getNickname()
+    getNickname();
   }, []);
 
-  
   const openModal = () => {
-    setModalIsOpen(true);       // 모달창이 열릴 수 있는 상태
-};
+    setModalIsOpen(true); // 모달창이 열릴 수 있는 상태
+  };
 
   const handleClickContainer = () => {
     setDropdownView(!isDropdownView);
@@ -36,18 +35,18 @@ function Header_menu({ logoText }) {
   };
   const getNickname = async () => {
     try {
-      const response = await axiosInstance.get('/users/users-info'); // API 엔드포인트를 적절하게 수정
-  
+      const response = await axiosInstance.get("/users/users-info"); // API 엔드포인트를 적절하게 수정
+
       const userData = response.data.user_info; // 서버에서 받은 사용자 정보
-      console.log(userData)
+      console.log(userData);
       const { nickname } = userData; // 이름, 학번, 역할 추출
-  
+
       setNickname(nickname);
-      console.log('닉네임 변경 성공', response.data);
+      console.log("닉네임 변경 성공", response.data);
       // 닉네임 변경 성공 후 다른 작업 수행
       // 예: 성공 메시지 표시, 리다이렉트 등
     } catch (error) {
-      console.error('닉네임 변경 오류', error.response.data);
+      console.error("닉네임 변경 오류", error.response.data);
       // 오류 처리
       // 예: 실패 메시지 표시
     }
@@ -78,10 +77,6 @@ function Header_menu({ logoText }) {
                     <img src={CartIcon} className="header-cart-button-icon" alt="Cart" />
                   </Link>
                 </div>
-              </div>
-              <div className="qr">
-                {/* QR코드 */}
-                <Qr /> {/* 모달창 띄우는 컴포넌트 */}
               </div>
               <div className="list" onBlur={handleBlurContainer}>
                 {/* 메뉴 드롭다운_onBlur 사용 */}
