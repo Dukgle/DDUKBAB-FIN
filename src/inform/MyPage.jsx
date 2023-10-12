@@ -255,14 +255,14 @@ function MyPage() {
         <div className="my-reservation">
           <div className="name-title">음식 주문 번호</div>
           <div className="reservation-box">
-                          {seatData ? (
+                          {id ? (
                   // 2. 예약 내역이 있는 경우
                   <div className="my-seat" onClick={() => handleSeatClick(seatData)}>
                     <div className="my-seat-text">
                       <p>주문번호</p>
                     </div>
                     <div className="my-seat-num">
-                      <p>{id}</p>
+                      <p>{id -1}</p>
                     </div>
                   </div>
                 ) : (

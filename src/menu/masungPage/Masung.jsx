@@ -9,6 +9,7 @@ import soldOutImage from "../../img/품절.png";
 function Masung() {
   const logoText = "마성떡볶이";
 
+
   const menus = [
     { name: "혼족세트", price: "6,000" },
     { name: "마성세트", price: "11,000" },
