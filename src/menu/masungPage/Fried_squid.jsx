@@ -35,21 +35,19 @@ function Fried_squid() {
             <div className='bookmarkIcon'>
                 <BookmarkButton />
             </div>
-            <Link to="/optionMasung">
-                <div className='menu-inform-wrap'>
-                    <div className='menu-img'>
-                        <img src={image} alt='사진' width='130' class='menu-menu-img' height='110' />
+            <div className='menu-inform-wrap'>
+                <div className='menu-img'>
+                    <img src={image} alt='사진' width='130' class='menu-menu-img' height='110' />
+                </div>
+                <div className='infrom-text'>
+                    <div className='menu-name'>
+                        오징어튀김
                     </div>
-                    <div className='infrom-text'>
-                        <div className='menu-name'>
-                            오징어튀김
-                        </div>
-                        <div className='menu-price'>
-                            3,000원
-                        </div>
+                    <div className='menu-price'>
+                        3,000원
                     </div>
                 </div>
-            </Link>
+            </div>
             <div className='nutrient-img'>
                 <img src={image_net} alt='사진' class='today-nutrient-img' width='340' height='215' />
             </div>

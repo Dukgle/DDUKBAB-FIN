@@ -23,7 +23,6 @@ function AloneSet() {
                     amount: amount,
                 });
                 console.log('장바구니 추가 성공', response.data);
-   
         } catch (error) {
             console.error('장바구니 처리 오류:', error.response.data.error);
         }

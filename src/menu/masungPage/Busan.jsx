@@ -36,23 +36,32 @@ function Busan() {
             <div className='bookmarkIcon'>
                 <BookmarkButton />
             </div>
-            <Link to="/optionMasung">
-                <div className='menu-inform-wrap'>
-                    <div className='menu-img'>
-                        <img src={image} alt='사진' class='menu-menu-img' width='130' height='110' />
+            <div className='menu-inform-wrap'>
+                <div className='menu-img'>
+                    <img src={image} alt='사진' class='menu-menu-img' width='130' height='110' />
+                </div>
+                <div className='infrom-text'>
+                    <div className='menu-name'>
+                        부산어묵
                     </div>
-                    <div className='infrom-text'>
-                        <div className='menu-name'>
-                            부산어묵
-                        </div>
-                        <div className='menu-price'>
-                            2,000원
-                        </div>
+                    <div className='menu-price'>
+                        2,000원
                     </div>
                 </div>
-            </Link>
+            </div>
             <div className='nutrient-img'>
                 <img src={image_net} alt='사진' class='today-nutrient-img' width='340' height='215' />
+            </div>
+            <div className='option-quantity'>
+                <QuantityCheck amount={amount} setAmount={setAmount}/>
+            </div>
+            <div className="option-quantity-bottom-gap"></div>
+            <div className='option-cart-button-wrap'>
+                <Link to="/cart">
+                    <button className='option-cart-button' onClick={shoppingPost}>
+                        장바구니에 담기
+                    </button>
+                </Link>
             </div>
         </div>
     );
