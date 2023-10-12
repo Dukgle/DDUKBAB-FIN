@@ -1,4 +1,5 @@
 const express = require("express");
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const port = process.env.PORT || 3000;
@@ -82,18 +83,16 @@ router.post('/mypage/charge/point', (req, res) => {
     });
 });
 
-router.put('/point-update', (req, res) => {
-  const params = req.body.params;
-  const amount = params.amount;
-  const uni_num = params.uni_num;
-  
-  // 현재 사용자의 포인트 가져오는 쿼리
-  const getPointQuery = 'SELECT point FROM users WHERE uni_num = ?';
+router.put('/point-update', verifyToken, (req, res) => {
+  const userId = req.userId; // 클라이언트에서 보내는 user_id
+  let userPoint, orderTotalPrice;
 
-  db.query(getPointQuery, [uni_num], (err, result) => {
+  // 1. users 테이블에서 user_id를 기반으로 현재 사용자의 포인트를 가져옴
+  const getUserPointQuery = 'SELECT point FROM users WHERE user_id = ?';
+  db.query(getUserPointQuery, [userId], (err, result) => {
     if (err) {
-      console.error('포인트 조회 오류:', err);
-      res.status(500).json({ error: '포인트 조회 실패' });
+      console.error('사용자 포인트 조회 오류:', err);
+      res.status(500).json({ error: '사용자 포인트 조회 실패' });
       return;
     }
 
@@ -102,32 +101,50 @@ router.put('/point-update', (req, res) => {
       return;
     }
 
-    const userPoint = result[0].point;
+    userPoint = result[0].point;
+    console.log(userPoint)
 
-    // 충분한 포인트가 있는지 확인
-    if (userPoint < pointToDeduct) {
-      res.status(400).json({ error: '포인트가 부족합니다' });
-      return;
-    }
-
-    // 포인트 차감 후 업데이트하는 쿼리
-    const updatePointQuery = 'UPDATE users SET point = ? WHERE id = ?';
-    const updatedPoint = userPoint -amount;
-
-    db.query(updatePointQuery, [updatedPoint, uni_num], (err, result) => {
+    // 2. orders 테이블에서 user_id를 기반으로 가장 최근 주문의 total_price를 가져옴
+    const getOrderTotalPriceQuery = 'SELECT total_price FROM orders WHERE user_id = ? ORDER BY created_at DESC LIMIT 1';
+    db.query(getOrderTotalPriceQuery, [userId], (err, result) => {
       if (err) {
-        console.error('포인트 업데이트 오류:', err);
-        res.status(500).json({ error: '포인트 업데이트 실패' });
+        console.error('주문의 total_price 조회 오류:', err);
+        res.status(500).json({ error: '주문의 total_price 조회 실패' });
         return;
       }
 
-      if (result.affectedRows === 0) {
-        res.status(404).json({ error: '포인트 업데이트 실패' });
+      if (result.length === 0) {
+        res.status(404).json({ error: '주문을 찾을 수 없습니다' });
         return;
       }
 
-      // 포인트 업데이트가 성공하면 응답
-      res.json({ message: '포인트가 성공적으로 깎였습니다' });
+      orderTotalPrice = result[0].total_price;
+
+      // 3. 사용자의 포인트가 주문의 가격보다 작으면 에러 응답
+      if (userPoint < orderTotalPrice) {
+        res.status(400).json({ error: '포인트가 부족합니다' });
+        return;
+      }
+
+      // 4. 사용자의 포인트에서 주문 가격을 차감하고 업데이트
+      const updatedPoint = userPoint - orderTotalPrice;
+      const updateUserPointQuery = 'UPDATE users SET point = ? WHERE user_id = ?';
+
+      db.query(updateUserPointQuery, [updatedPoint, userId], (err, result) => {
+        if (err) {
+          console.error('포인트 업데이트 오류:', err);
+          res.status(500).json({ error: '포인트 업데이트 실패' });
+          return;
+        }
+
+        if (result.affectedRows === 0) {
+          res.status(404).json({ error: '포인트 업데이트 실패' });
+          return;
+        }
+
+        // 5. 업데이트가 성공하면 응답
+        res.json({ message: '포인트가 성공적으로 변경되었습니다' });
+      });
     });
   });
 });
