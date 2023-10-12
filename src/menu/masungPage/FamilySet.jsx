@@ -12,17 +12,17 @@ import BookmarkButton from '../bookmark/Bookmark';
 function FamilySet() {
     const logoText = "마성떡볶이";
 
-    const  {name} = useParams();
+    const menuName = "패밀리세트"
     
     const [amount, setAmount] = useState(1);
 
     const shoppingPost = async (e) => {
         try {
-            const response = await axiosInstance.post(`users/shopping/order-select?menu_name=${name}`, {
-                menu_name:name,
+            const response = await axiosInstance.post(`users/shopping/order-select`, {
+                menu_name:menuName,
                 amount:amount
             });
-            console.log(name, amount)
+            // console.log(name, amount)
             } catch (error) {
             console.error('장바구니 처리 오류', error.response.data.error);
         }
@@ -52,7 +52,7 @@ function FamilySet() {
                 <img src={image_net} alt='사진' class='today-nutrient-img' width='340' height='215' />
             </div>
             <div className='option-quantity'>
-                <QuantityCheck amount={amount} setAmount={setAmount}/>
+                <QuantityCheck onAmountChange={setAmount}/>
             </div>
             <div className="option-quantity-bottom-gap"></div>
             <div className='option-cart-button-wrap'>

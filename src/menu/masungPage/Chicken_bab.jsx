@@ -56,7 +56,7 @@ function Chicken_bab() {
                 <img src={image_net} alt='사진' class='today-nutrient-img' width='340' height='215' />
             </div>
             <div className='option-quantity'>
-                <QuantityCheck amount={amount} setAmount={setAmount}/>
+                <QuantityCheck onAmountChange={setAmount}/>
             </div>
             <div className="option-quantity-bottom-gap"></div>
             <div className='option-cart-button-wrap'>
