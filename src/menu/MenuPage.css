@@ -22,6 +22,23 @@
     height: 140px;
 }
 
+.option-quantity-bottom-gap {
+    height: 100px;
+}
+
+.option-cart-button {
+    width: calc(80vw - 20px);
+    margin-top: 20px;
+    padding: 5px 10px;
+    position: fixed;
+    text-align: center;
+    margin: 30px;
+    padding: 10px;
+    border-radius: 25px;
+    border: 2px solid #FCCB6F;
+    height: 50px;
+}
+
 .infrom-text {
     display: inline-block;
     vertical-align: top;
@@ -49,4 +66,11 @@
 
 #gap {
     height: 15px;
+}
+
+
+@media (hover: hover) {
+    .option-cart-button {
+      width: calc(390px * 0.8 - 20px);
+    }
 }
