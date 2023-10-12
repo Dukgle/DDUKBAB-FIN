@@ -1,99 +1,105 @@
 .review-page {
-    align-items: center;
-    flex-direction : column;
+  align-items: center;
+  flex-direction: column;
+}
+
+.review-write-center {
+  padding: 0 15px;
 }
 
 .write {
-    position: relative;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    font-size: 20px;
-    font-weight: 600;
-    color: #43000A;
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #43000a;
 }
 
 .dropdownSelect select {
-    position: relative;
-    width: 90%; 
-    margin: 5px;
-    padding: 12px; 
-    border: 1px solid #43000A; 
-    border-radius: 5px; 
-    background-color: #f4f4f4;
-    font-size: 18px; 
-    color: #333;
- 
+  position: relative;
+  width: 100%;
+  margin: 5px 0;
+  padding: 12px;
+  border: 1px solid #43000a;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  font-size: 18px;
+  color: #333;
+  font-family: "Pretendard-Regular";
 }
 
 .star-select select {
-    position: relative;
-    width: 90%;
-    margin: 5px;
-    padding: 12px;
-    border: 1px solid #43000A;
-    border-radius: 5px;
-    background-color: #f4f4f4;
-    font-size: 18px;
-    color: #333;
-    margin-right: 10px;
+  position: relative;
+  width: 100%;
+  margin: 5px 0;
+  padding: 12px;
+  border: 1px solid #43000a;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  font-size: 18px;
+  color: #333;
+  margin-right: 10px;
+  font-family: "Pretendard-Regular";
 }
 
 .star-select select::-ms-expand {
-    display: none;
+  display: none;
 }
 
 .dropdownSelect option {
-    font-size: 14px; /* 옵션 폰트 크기 설정 */
-    color: #333; /* 옵션 텍스트 색상 설정 */
+  font-size: 14px; /* 옵션 폰트 크기 설정 */
+  color: #333; /* 옵션 텍스트 색상 설정 */
 }
 
 .dropdownSelect option:checked {
-    background-color: #aaaaaa;
-    color: #FFFFFF;
+  background-color: #aaaaaa;
+  color: #ffffff;
 }
 
 .title-input {
-    margin-top: 20px;
-    position: relative;
-  }
-  
-  .title-input input {
-    position: relative;
-    margin-left: 5px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    width: 85%;
-    padding: 8px;
-    border: none;
-    border-bottom: 2px solid #43000A; /* 밑줄 스타일 및 색상 설정 */
-    outline: none;
-    font-size: 16px;
-  }
+  margin-top: 20px;
+  position: relative;
+}
 
+.title-input input {
+  position: relative;
+  /* margin-left: 5px; */
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: calc(100% - 20px);
+  padding: 8px;
+  border: none;
+  border-bottom: 2px solid #43000a; /* 밑줄 스타일 및 색상 설정 */
+  outline: none;
+  font-size: 16px;
+  font-family: "Pretendard-Regular";
+}
 
 .content-input textarea {
-    margin-left: 5px;
-    width: 85%;
-    padding: 10px; 
-    border: 2px solid #43000A;
-    border-radius: 5px;
-    outline: none;
-    font-size: 16px; 
-    resize: none; /* 사용자 크기 조절 비활성화 */
-    min-height: 150px; /* 최소 높이 설정 */
+  /* margin-left: 5px; */
+  /* width: 85%; */
+  width: calc(100% - 28px);
+  padding: 10px;
+  border: 2px solid #43000a;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+  resize: none; /* 사용자 크기 조절 비활성화 */
+  min-height: 150px; /* 최소 높이 설정 */
+  font-family: "Pretendard-Regular";
 }
-    
-  
+
 .registerBtn {
-    position: relative;
-    display: inline-block;
-    left: 77%;
-    margin-top: 5px;
-    padding: 10px 15px;
-    background-color: #f4f4f4;
-    border-radius: 5px;
-    border: 1px solid #43000A;
-    color: #333;
-    cursor: pointer;
+  position: relative;
+  display: inline-block;
+  left: calc(100% - 63px);
+  margin-top: 5px;
+  padding: 10px 15px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  border: 1px solid #43000a;
+  color: #333;
+  cursor: pointer;
 }

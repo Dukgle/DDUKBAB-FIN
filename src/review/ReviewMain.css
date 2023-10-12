@@ -1,131 +1,126 @@
-.dropdown-select select{
-    width: 90%; 
-    margin: 5px;
-    padding: 12px; 
-    border: 1px solid #43000A; 
-    border-radius: 5px; 
-    background-color: #f4f4f4; 
-    font-size: 18px; 
-    color: #333;
-    overflow-y: auto;
-    flex: 1;
-    margin-right: 10px;
+.review-center {
+  padding: 0 15px;
 }
 
+.dropdown-select select {
+  width: 100%;
+  margin: 5px 0;
+  padding: 12px;
+  border: 1px solid #43000a;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  font-size: 18px;
+  color: #333;
+  overflow-y: auto;
+  flex: 1;
+  margin-right: 10px;
+}
 
 .dropdown-select option {
-    background-color: #fff; 
-    font-size: 14px; 
-    color: #333; 
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
 }
-
 
 .dropdown-select option:checked {
-    background-color: #f4f4f4;
+  background-color: #f4f4f4;
 }
-
 
 .sortBtn {
-    position: relative;
-    top: 20px;
-    
+  position: relative;
+  top: 20px;
 }
 
-.new{
-    margin-right: 15px;
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #f4f4f4;
-    border-radius: 5px;
-    border: 1px solid #43000A;
-    color: #333;
-    cursor: pointer;
+.new {
+  margin-right: 15px;
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  border: 1px solid #43000a;
+  color: #333;
+  cursor: pointer;
 }
 
-.star{
-    display: inline-block;
-    padding: 10px 15px; 
-    background-color: #f4f4f4;
-    border-radius: 5px;
-    border: 1px solid #43000A;
-    color: #333;
-    cursor: pointer;
+.star {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  border: 1px solid #43000a;
+  color: #333;
+  cursor: pointer;
 }
 
 /* 최신순 버튼이 선택되었을 때 */
 .sortBtn .new.active {
-    background-color: #FCCB6F;
+  background-color: #fccb6f;
 }
 
 /* 별점순 버튼이 선택되었을 때 */
 .sortBtn .star.active {
-    background-color: #FCCB6F;
+  background-color: #fccb6f;
 }
 
-
 .writeBtn {
-    position: relative;
-    left: 75%;
-    top: -33px;
+  position: relative;
+  left: calc(100% - 70px);
+  top: -21px;
 }
 
 .btnText {
-    display: inline-block;
-    padding: 10px 20px; 
-    background-color: #f4f4f4;
-    border-radius: 5px;
-    border: 1px solid #43000A;
-    color: #333;
-    cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  border: 1px solid #43000a;
+  color: #333;
+  cursor: pointer;
 }
 
 .btnText:hover {
-    background-color: #FCCB6F;
+  background-color: #fccb6f;
 }
 
-
-
 .review-list {
-    display: flex;
-    flex-direction: column; /* 리뷰 세로로 나열 */
-    gap: 10px;
+  display: flex;
+  flex-direction: column; /* 리뷰 세로로 나열 */
+  gap: 10px;
 }
 
 .review-item {
-    position: relative;
-    width: 90%;
-    padding-left: 15px;
-    border: 1px solid #43000A;
-    border-radius: 5px;
-    background-color: #fff;
-    cursor: pointer;
+  position: relative;
+  width: 100%;
+  /* padding-left: 15px; */
+  border: 1px solid #43000a;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 .review-item h3 {
-    position: relative;
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #000000;
+  position: relative;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #000000;
 }
 
 .review-item p {
-    font-size: 18px;
-    color: #000000;
+  font-size: 18px;
+  color: #000000;
 }
 
-
 .star-rating img {
-    width: 20px;
-    display: inline-block; /* 이미지를 인라인 블록으로 변경하여 수평 정렬 */
+  width: 20px;
+  display: inline-block; /* 이미지를 인라인 블록으로 변경하여 수평 정렬 */
 }
 
 .star-rating span {
-    font-weight: 600;
-    display: inline-block; /* 별점을 인라인 블록으로 변경하여 수평 정렬 */
-    margin-bottom: 0; /* 별점 아래 여백 제거 */
-    margin-right: 7px; /* 별과 별점 사이의 간격 추가 */
+  font-weight: 600;
+  display: inline-block; /* 별점을 인라인 블록으로 변경하여 수평 정렬 */
+  margin-bottom: 0; /* 별점 아래 여백 제거 */
+  margin-right: 7px; /* 별과 별점 사이의 간격 추가 */
 }
 
 .time {
-
 }
