@@ -28,9 +28,6 @@ function Cart_Bookmark({ bookmark_menus }) {
                                             <BookmarkButton menu_name={menu.menu_name}/>
                                         </div>
                                         <div className='bookmark-item-wrap'>
-                                            <div className='bookmark-item-img'>
-                                                <img src={"./4분돼지김치파스타.jpg"}alt='사진' width='70' height='50' />
-                                            </div>
                                             <div className='bookmark-menu-name'>
                                                 {menu.menu_name}
                                             </div>

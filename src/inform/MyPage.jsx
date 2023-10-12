@@ -235,8 +235,8 @@ function MyPage() {
         </Modal>
 
         <div className="my-food">
-          <div className="name-title">내 주문내역</div>
-          <Link to="/#">
+          {/* <div className="name-title">내 주문내역</div> */}
+          {/* <Link to="/#">
             <button className="name-box-2">
               <p>주문내역 확인하러 가기</p>
               <img src={linkImg} alt="link" />
@@ -250,7 +250,7 @@ function MyPage() {
               <p>내 후기 확인하러 가기</p>
               <img src={linkImg} alt="link" />
             </button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

@@ -14,15 +14,12 @@ function Fried_mandu() {
     const menuName = "삼각잡채말이만두"; // 고정된 메뉴 이름
     const [amount, setAmount] = useState(1); // 수량 상태
 
-    const  {name} = useParams();
-
     const shoppingPost = async (e) => {
         try {
-            const response = await axiosInstance.post(`users/shopping/order-select?menu_name=${name}`, {
-                menu_name:name,
+            const response = await axiosInstance.post(`users/shopping/order-select`, {
+                menu_name: menuName,
                 amount:amount
             });
-            console.log(name, amount)
             } catch (error) {
             console.error('장바구니 처리 오류', error.response.data.error);
         }

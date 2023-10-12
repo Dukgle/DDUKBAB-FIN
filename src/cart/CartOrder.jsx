@@ -15,11 +15,11 @@ function CartOrder() {
         background: "#FCCB6F",
     };
 
-    // const cart_menus = [
-    //     { id: 1, name: "마성떡볶이", menu: "혼족세트", num: 1, price: 6500, image: image_masung },
-    //     { id: 2, name: "마성떡볶이", menu: "마성떡볶이", num: 1, price: 4500, image: image_alone },
-    //     { id: 3, name: "샌드위치 카페", menu: "아이스티", num: 1, price: 3500, image: image_icetea }
-    // ];
+    const cart_menus = [
+        { id: 1, name: "마성떡볶이", menu: "혼족세트", num: 1, price: 6500, image: image_masung },
+        { id: 2, name: "마성떡볶이", menu: "마성떡볶이", num: 1, price: 4500, image: image_alone },
+        { id: 3, name: "샌드위치 카페", menu: "아이스티", num: 1, price: 3500, image: image_icetea }
+    ];
 
     // 아이템 가격의 합을 저장할 상태 변수
     const [totalPrice, setTotalPrice] = useState(0);

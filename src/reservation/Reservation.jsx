@@ -116,7 +116,7 @@ for (let i = 0; i < 6; i++) {
             ))}
           </select> */}
         </div>
-        <div className="reserv-content">
+        {/* <div className="reserv-content">
           <div className="reserv-content-box">
             <div className="reserv-content-box-yes"></div>
             <p>예약 가능</p>
@@ -125,7 +125,7 @@ for (let i = 0; i < 6; i++) {
             <div className="reserv-content-box-no"></div>
             <p>예약 불가</p>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* 모달 렌더링 */}
