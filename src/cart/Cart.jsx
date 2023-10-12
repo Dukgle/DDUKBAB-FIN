@@ -48,7 +48,7 @@ function Cart() {
 
   const pointUpdate = async (e) => {
     try {
-      const response = await axiosInstance.delete("/user/point-update");
+      const response = await axiosInstance.put("/user/point-update");
 
       console.log("자리 예약 반납 성공", response.data);
       // 닉네임 변경 성공 후 다른 작업 수행
