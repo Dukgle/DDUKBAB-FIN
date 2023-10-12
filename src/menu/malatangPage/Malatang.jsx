@@ -17,7 +17,7 @@ function Malatang() {
     { name: "빙홍차", price: "2,500" },
   ];
 
-  const menusOut = [{ name: "꿔바로우_대", price: "10,000" }];
+  const menusOut = [];
 
   return (
     <div className="menu-page">

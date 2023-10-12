@@ -55,9 +55,7 @@ function Cafe() {
   ];
 
   const menusOut = [
-    { name: "딸기요거트스무디", price: "4,100" },
-    { name: "망고요거트스무디", price: "4,100" },
-    { name: "밀크티", price: "3,200" },
+    //
   ];
 
   return (

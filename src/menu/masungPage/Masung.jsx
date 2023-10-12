@@ -35,10 +35,7 @@ function Masung() {
   ];
 
   const menusOut = [
-    { name: "마성떡볶이", price: "3,500" },
-    { name: "치킨꼬치떡볶이", price: "5,500" },
-    { name: "버터장조림덮밥", price: "5,000" },
-    { name: "치킨마요덮밥", price: "5,000" },
+    //
   ];
 
   return (
