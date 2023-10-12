@@ -123,3 +123,8 @@
 .reserv-content-box-no {
   background-color: #d9d9d9;
 }
+
+.chair.reserved {
+  background-color: #d9d9d9; /* 이 부분을 변경하여 원하는 색상으로 설정합니다. */
+  cursor: not-allowed;
+}
