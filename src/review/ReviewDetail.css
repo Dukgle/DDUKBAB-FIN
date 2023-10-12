@@ -8,6 +8,7 @@
 .review-name {
   font-size: 18px;
   font-weight: bold;
+  margin-top: 30px;
   margin-bottom: 10px;
 }
 
@@ -15,17 +16,19 @@
   position: relative;
   width: 90%;
   height: auto;
+  margin-top: 20px;
   padding: 15px;
   border: 2px solid #43000a;
   border-radius: 5px;
   background-color: #fff;
   cursor: pointer;
+  min-height: 70px;
 }
 
 .star-rating {
   align-items: center;
   font-size: 18px;
-  margin: 10px 5px;
+  margin: 20px 5px;
 }
 
 .review-back-button {
@@ -36,8 +39,23 @@
   cursor: pointer;
 }
 
+.type {
+  margin-top: 20px;
+}
+
+.menu {
+  margin-top: 10px;
+}
+
+.time {
+  margin-top: 10px;
+}
+
+.like-container {
+  display: flex;
+  align-items: center;
+}
 
 .like {
-  width: 20px;
-  height: 20px;
+  cursor: pointer;
 }
