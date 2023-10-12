@@ -10,12 +10,12 @@ function ReviewEdit() {
   // 예시 리뷰 데이터
   const exampleReview = {
     id: 1,
-    title: '무난하게 맛있음',
-    content: '무난하게 맛있음 다음에는 다른 메뉴도 먹어봐야겠음',
+    title: "무난하게 맛있음",
+    content: "무난하게 맛있음 다음에는 다른 메뉴도 먹어봐야겠음",
     starRating: 4.5,
-    type: '파스타',
-    menu: '알리오올리오',
-    time: '1시간 전'
+    type: "파스타",
+    menu: "알리오올리오",
+    time: "1시간 전",
   };
 
   // 수정할 리뷰 상태
@@ -51,33 +51,15 @@ function ReviewEdit() {
         <form>
           <div className="form-group">
             <label htmlFor="title">제목</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={review.title}
-              onChange={(e) => setReview({ ...review, title: e.target.value })}
-            />
+            <input type="text" className="review-input" id="title" name="title" value={review.title} onChange={(e) => setReview({ ...review, title: e.target.value })} />
           </div>
           <div className="form-group">
             <label htmlFor="content">내용</label>
-            <textarea
-              id="content"
-              name="content"
-              value={review.content}
-              onChange={(e) => setReview({ ...review, content: e.target.value })}
-            ></textarea>
+            <textarea id="content" name="content" value={review.content} onChange={(e) => setReview({ ...review, content: e.target.value })}></textarea>
           </div>
           <div className="form-group">
             <label htmlFor="starRating">별점</label>
-            <select
-              id="starRating"
-              name="starRating"
-              value={review.starRating}
-              onChange={(e) =>
-                setReview({ ...review, starRating: parseFloat(e.target.value) })
-              }
-            >
+            <select id="starRating" name="starRating" value={review.starRating} onChange={(e) => setReview({ ...review, starRating: parseFloat(e.target.value) })}>
               {/* 0.5부터 5.0까지 0.5 단위로 선택할 수 있도록 옵션 추가 */}
               {Array.from({ length: 10 }, (_, i) => i * 0.5 + 0.5).map((value) => (
                 <option key={value} value={value}>
