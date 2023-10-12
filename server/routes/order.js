@@ -27,7 +27,7 @@ function verifyToken(req, res, next) {
     const userId = req.userId;
     const createdAt = new Date().toISOString().split('T')[0];
   
-    const query = `SELECT id FROM orders WHERE user_id = ? and DATE_FORMAT(created_at, '%Y-%m-%d' ) = ?`;
+    const query = `SELECT id FROM orders WHERE user_id = ? `;
   
     db.query(query, [userId, createdAt], (err, result) => {
       if (err) {
