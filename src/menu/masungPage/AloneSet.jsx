@@ -17,7 +17,7 @@ function AloneSet() {
             <div className='bookmarkIcon'>
                 <BookmarkButton />
             </div>
-            <Link to="/optionMasung">
+            <Link to="/optionMasung/">
                 <div className='menu-inform-wrap'>
                     <div className='menu-img'>
                         <img src={image} alt='사진' width='130' height='110' />

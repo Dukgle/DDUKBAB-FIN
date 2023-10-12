@@ -1,7 +1,7 @@
 import "../MenuList.css";
 import React from "react";
 import Header_menu from "../../header/Header_menu";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import images from "../../img/masung/index.js";
 import BookmarkButton from "../bookmark/Bookmark";
 import soldOutImage from "../../img/품절.png";
@@ -49,7 +49,7 @@ function Masung() {
         {menus.map((m, i) => (
           <div className="menu-container">
             <div className="bookmarkIcon">
-              <BookmarkButton menu_name={m.name}/>
+              <BookmarkButton/>
             </div>
             <React.Fragment key={m.name}>
               <Link to={`/menu/${m.name}`}>

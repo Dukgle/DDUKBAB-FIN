@@ -99,7 +99,10 @@ function verifyToken(req, res, next) {
 
   router.post('/order-select', verifyToken, (req, res) => {
     const userId = req.userId;
-    const { menu_name, amount } = req.body;
+    const menu_name = req.params.name;
+    const amount = req.body.amount;
+
+    console.log(menu_name, amount);
   
     // 해당 사용자의 장바구니에 이미 동일한 메뉴가 있는지 확인
     const checkDuplicateQuery = `SELECT * FROM shopping WHERE user_id = ? AND menu_name = ?`;

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
 function QuantityCheck() {
-    const [quantity, setQuantity] = useState(1);
+    const [amount, setQuantity] = useState(1);
 
     const handleIncrement = () => {
-        setQuantity(quantity + 1);
+        setQuantity(amount + 1);
     };
 
     const handleDecrement = () => {
-        if (quantity > 1) {
-        setQuantity(quantity - 1);
+        if (amount > 1) {
+        setQuantity(amount - 1);
         }
     };
 
@@ -21,7 +21,7 @@ function QuantityCheck() {
                 <button className='minus-button' onClick={handleDecrement}>-</button>
             </div>
             <div className='option-quantity-num'>
-                <span>{quantity}</span>
+                <span>{amount}</span>
             </div>
             <div className='plus-button-div'>
                 <button className='plus-button' onClick={handleIncrement}>+</button>
