@@ -1,3 +1,8 @@
+.review-page {
+    align-items: center;
+    justify-content: center;
+}
+
 .write {
     position: relative;
     margin-top: 10px;
