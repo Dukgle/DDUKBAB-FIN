@@ -30,9 +30,11 @@ function Cart() {
             <Link to='/bookmark'>
                 <button className='bookmark-page-button'>즐겨찾는 메뉴</button>
             </Link>
-
-            {/* CartMenu 컴포넌트를 렌더링합니다. */}
-            <CartMenu cart_menus={cart_menus} />
+            
+            <div className='cart-component-div'>
+                {/* CartMenu 컴포넌트를 렌더링합니다. */}
+                <CartMenu cart_menus={cart_menus} />
+            </div>
 
             <Link to={cart_menus.length === 0 ? '#' : '/order'}>
                 <div className='order-button-div'>

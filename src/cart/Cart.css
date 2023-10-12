@@ -106,6 +106,14 @@
     display: flex;
 }
 
+.cart-component-div {
+    height: 400px;
+}
+
+.cart-component-top {
+    height: 20px;
+}
+
 @media (hover: hover) {
     .pay-button {
       width: calc(390px * 0.8 - 20px);
