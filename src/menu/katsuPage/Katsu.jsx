@@ -19,8 +19,7 @@ function Katsu() {
   ];
 
   const menusOut = [
-    { name: "고구마치즈돈까스", price: "6,900" },
-    { name: "돈카츠카레덮밥", price: "7,500" },
+    //
   ];
 
   return (

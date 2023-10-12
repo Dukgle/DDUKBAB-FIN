@@ -27,10 +27,7 @@ function Toast() {
   ];
 
   const menusOut = [
-    { name: "프렌치토스트_음료수", price: "4,000" },
-    { name: "크림치즈프렛즐", price: "2,700" },
-    { name: "글레이즈도넛", price: "1,300" },
-    { name: "바바리안크림도넛", price: "1,500" },
+    //
   ];
 
   return (
