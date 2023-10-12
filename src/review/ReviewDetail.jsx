@@ -66,7 +66,7 @@ function ReviewDetail() {
           <span>   {likeCount}</span> {/* 좋아요 수를 표시 */}
         </div>
 
-        {isLiked && authorReviews.length > 0 && (
+        {/* {isLiked && authorReviews.length > 0 && (
           <div className="author-reviews">
             <h3>{review.name}님이 작성한 다른 후기</h3>
             <ul>
@@ -79,7 +79,7 @@ function ReviewDetail() {
               ))}
             </ul>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
