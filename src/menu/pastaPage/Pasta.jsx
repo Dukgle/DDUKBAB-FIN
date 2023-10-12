@@ -35,7 +35,7 @@ function Pasta() {
           {menus.map((m, i) => (
             <div className="menu-container" key={m.name}>
               <div className="bookmarkIcon">
-                <BookmarkButton />
+                <BookmarkButton menu_name={m.name} />
               </div>
               <Link to={`/menu/${m.name}`}>
                 <div className="menu-wrap" id={m.name}>
