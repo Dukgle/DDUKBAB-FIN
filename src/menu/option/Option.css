@@ -1,93 +1,99 @@
 .option-wrap {
-    width: 340px;
-    display: inline-block;
-    border-radius: 5px;
-    border: 1px solid #43000A;
+  width: 340px;
+  display: inline-block;
+  border-radius: 5px;
+  border: 1px solid #43000a;
 }
 
 .option-wrap h3 {
-    display: block;
-    margin-left: 30px;
-    margin-bottom: 0px;
+  display: block;
+  margin-left: 30px;
+  margin-bottom: 0px;
 }
 
 .option-item {
-    display: inline-block;
+  display: inline-block;
 }
 
 .option-wrap p {
-    display: inline-block;
+  display: inline-block;
 }
 
 #option-price {
-    margin-left: 80px;
-    float: right;
+  margin-left: 80px;
+  float: right;
 }
 
 .checkBox-wrap {
-    display: inline-block;
-    margin: 10px;
-    margin-left: 30px;
+  display: inline-block;
+  margin: 10px;
+  margin-left: 30px;
 }
 
 .option-gap {
-    height: 350px;
+  height: 350px;
 }
 
 .quantityBox {
-    display: block;
-    border-top: 1px solid #43000A;
-    border-bottom: 1px solid #43000A;
+  display: block;
+  border-top: 1px solid #43000a;
+  border-bottom: 1px solid #43000a;
 }
 
-.option-quantity{
-    display: block;
-    flex: 0;
+.option-quantity {
+  display: block;
+  flex: 0;
 }
 
 .minus-button-div {
-    display: inline-block;
+  display: inline-block;
 }
 
 .plus-button-div {
-    display: inline-block;
+  display: inline-block;
 }
 
+.quantityBox-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .minus-button {
-    font-size: 30px; /* 버튼의 글꼴 크기를 조절합니다. */
-    width: 40px; /* 버튼의 너비를 조절합니다. */
-    height: 40px; /* 버튼의 높이를 조절합니다. */
-    display: inline-block;
-    padding: 5px;
-    margin-left: 100px;
+  font-size: 30px; /* 버튼의 글꼴 크기를 조절합니다. */
+  width: 40px; /* 버튼의 너비를 조절합니다. */
+  /* height: 40px; 버튼의 높이를 조절합니다. */
+  display: inline-block;
+  padding: 5px;
+  margin-bottom: 5px;
+  /* margin-left: 100px; */
 }
 
 .option-quantity-num {
-    display: inline-block;
-    font-size: 24px;
-    margin-left: 20px;
+  display: inline-block;
+  font-size: 24px;
+  margin-left: 20px;
 }
 
 .plus-button {
-    font-size: 24px; /* 버튼의 글꼴 크기를 조절합니다. */
-    width: 40px; /* 버튼의 너비를 조절합니다. */
-    height: 40px; /* 버튼의 높이를 조절합니다. */
-    display: inline-block;
-    padding: 5px;
-    margin-left: 20px;
+  font-size: 24px; /* 버튼의 글꼴 크기를 조절합니다. */
+  width: 40px; /* 버튼의 너비를 조절합니다. */
+  /* height: 40px; 버튼의 높이를 조절합니다. */
+  display: inline-block;
+  padding: 5px;
+  margin-left: 20px;
 }
 
 .option-cart-button {
-    position: fixed;
-    text-align: center;
-    background-color: #FCCB6F;
-    margin: 30px;
-    padding: 10px;
-    border-radius: 25px;
-    border: 2px solid #FCCB6F;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 50px;
+  position: fixed;
+  text-align: center;
+  background-color: #fccb6f;
+  margin: 30px;
+  padding: 10px;
+  border-radius: 25px;
+  border: 2px solid #fccb6f;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
 }
