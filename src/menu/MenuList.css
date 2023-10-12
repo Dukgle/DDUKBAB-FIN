@@ -1,5 +1,5 @@
 .menu-container {
-  width: 40%;
+  width: 41%;
   height: 140px;
   margin: 5px;
   margin-top: 10px;
@@ -53,4 +53,11 @@
 .name {
   text-align: center;
   text-decoration: none;
+}
+
+.menu-container-list {
+  width: 100%;
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
 }

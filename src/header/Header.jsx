@@ -5,7 +5,6 @@ import axiosInstance from "../api";
 
 import CartIcon from "../icon/icon-shopping-cart.png";
 import ListIcon from "../icon/icon-ui.png";
-import QrIcon from "../icon/icon-qr-code.png";
 
 import Cart from "../cart/Cart";
 import Qr from "./Qr";
@@ -14,11 +13,6 @@ import Dropdown from "./Dropdown";
 function Header({ logoText }) {
   const [isDropdownView, setDropdownView] = useState(false); // 드롭다운을 위한 함수 정의
   const [nickname, setNickname] = useState("");
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [qrCodeData, setQRCodeData] = useState("");
-  const [selectedSeat, setSelectedSeat] = useState("");
-  const [reservationDatetime, setReservationDatetime] = useState("");
-  const [modalMessage, setModalMessage] = useState("");
 
   useEffect(() => {
     // 페이지가 처음 렌더링될 때 사용자 정보를 가져오는 함수 호출
@@ -54,78 +48,6 @@ function Header({ logoText }) {
     }
   };
 
-  useEffect(() => {
-    // If the modal is open, start fetching seat_time every 1 second
-    if (modalIsOpen) {
-      const intervalId = setInterval(() => {
-        handleSeatTime();
-      }, 1000);
-
-      return () => {
-        // Clean up the interval when the modal is closed or component unmounts
-        clearInterval(intervalId);
-      };
-    }
-  }, [modalIsOpen]);
-
-  const openModal = () => {
-    setModalIsOpen(true); // 모달창이 열릴 수 있는 상태
-    handleSeatTime(); // Initial fetch of seat_time
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false); // 모달창을 닫을 수 있는 상태
-  };
-
-  const handleSeatClick = async (seatName) => {
-    setSelectedSeat(seatName);
-
-    try {
-      const reservationResponse = await axiosInstance.get(`/users/reservation/get`);
-      const reservationDatetime = reservationResponse.data.seat_time;
-      // Make a POST request to your Express route to generate the QR code
-      const response = await axiosInstance.post("/users/generatedQRCode", { text: seatName, reservation_datetime: reservationDatetime });
-
-      // The response should contain the QR code image data
-      const qrCodeImageData = response.data.qrCodeData;
-      setQRCodeData(qrCodeImageData);
-      setReservationDatetime(reservationDatetime);
-      setModalIsOpen(true);
-    } catch (error) {
-      console.error("Error generating QR code", error);
-      // Handle the error as needed
-    }
-  };
-
-  const handleSeatTime = async () => {
-    try {
-      const reservationResponse = await axiosInstance.get(`/users/reservation/get`);
-      const reservationDatetime = reservationResponse.data.seat_time;
-
-      setReservationDatetime(reservationDatetime);
-
-      // 시간을 분:초로 분리
-      const [minutes, seconds] = reservationDatetime.split(":").map(Number);
-
-      // 남은 시간을 초로 계산
-      const remainingTimeInSeconds = minutes * 60 + seconds;
-
-      if (remainingTimeInSeconds === 0) {
-        // 남은 시간이 0이 되면 모달 메시지를 설정
-        setModalMessage("10분이 지나 자리 예약이 취소되었습니다.");
-        await seatDelete();
-      } else if (remainingTimeInSeconds <= 600) {
-        // 10분 이하로 남으면 모달 메시지를 설정
-        setModalMessage("10분이 지나 자리 예약이 취소됩니다.");
-      } else {
-        setModalMessage(""); // 모달 메시지 초기화
-      }
-    } catch (error) {
-      console.error("Error generating seat_time", error);
-      // 오류 처리
-    }
-  };
-
   return (
     <header>
       <div className="header-menu">
@@ -152,22 +74,10 @@ function Header({ logoText }) {
                   </Link>
                 </div>
               </div>
-              <div className="qr-button">
-                {/* {seatData ? <img src={QrIcon} alt="QR Code" onClick={() => handleSeatClick(seatData)} /> : <img src={QrIcon} alt="QR Code" />}
-                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="QR Code Modal" className="qr-modal-container">
-                  <h4>예약한 좌석</h4>
-                  <h1>{selectedSeat}</h1>
-                  <h4>남은 시간 : {reservationDatetime}</h4>
-                  {reservationDatetime !== "0:00" && qrCodeData && (
-                    <>
-                      <img src={qrCodeData} alt="QR Code" />
-                    </>
-                  )}
-                  {reservationDatetime === "0:00" && <p>10분이 지나 자리 예약이 취소되었습니다.</p>}
-                </Modal> */}
+              <div className="qr">
+                {/* QR코드 */}
+                <Qr /> {/* 모달창 띄우는 컴포넌트 */}
               </div>
-              {/* QR코드 */}
-              {/* <Qr /> 모달창 띄우는 컴포넌트 */}
               <div className="list" onBlur={handleBlurContainer}>
                 {/* 메뉴 드롭다운_onBlur 사용 */}
                 <button className="list-button" onClick={handleClickContainer}>

@@ -44,23 +44,24 @@ function Masung() {
   return (
     <div className="menu-page">
       <Header_menu logoText={logoText} />
-      <div id="gap"></div>
-      <div id="menu-list">
-        {menus.map((m, i) => (
-          <div className="menu-container">
-            <div className="bookmarkIcon">
-              <BookmarkButton/>
+      <div className="menu-container-list">
+        <div id="menu-list">
+          {menus.map((m, i) => (
+            <div className="menu-container">
+              <div className="bookmarkIcon">
+                <BookmarkButton />
+              </div>
+              <React.Fragment key={m.name}>
+                <Link to={`/menu/${m.name}`}>
+                  <div className="menu-wrap" id={m.name}>
+                    <div className="img-menus">{menusOut.some((menu) => menu.name === m.name) ? <img src={soldOutImage} alt="품절" className="sold-out-image" width="80" height="60" /> : <img src={images[m.name]} alt="사진" width="90" height="70" />}</div>
+                    <div className="name">{m.name}</div>
+                  </div>
+                </Link>
+              </React.Fragment>
             </div>
-            <React.Fragment key={m.name}>
-              <Link to={`/menu/${m.name}`}>
-                <div className="menu-wrap" id={m.name}>
-                  <div className="img-menus">{menusOut.some((menu) => menu.name === m.name) ? <img src={soldOutImage} alt="품절" className="sold-out-image" width="80" height="60" /> : <img src={images[m.name]} alt="사진" width="90" height="70" />}</div>
-                  <div className="name">{m.name}</div>
-                </div>
-              </Link>
-            </React.Fragment>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
