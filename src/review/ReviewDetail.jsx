@@ -35,11 +35,11 @@ function ReviewDetail() {
   // }
 
   // 같은 작성자의 리뷰를 찾는 함수
-  const getReviewsByAuthor = (authorName) => {
-    return review.filter((review) => review.name === authorName);
-  };
+  // const getReviewsByAuthor = (authorName) => {
+  //   return review.filter((review) => review.name === authorName);
+  // };
 
-  const authorReviews = getReviewsByAuthor(review.name);
+  // const authorReviews = getReviewsByAuthor(review.name);
 
   const goBack = () => {
     navigate(-1); // 이전 페이지로 이동
@@ -49,12 +49,12 @@ function ReviewDetail() {
     reviewGet();
 }, [post_id]);
 
-useEffect(() => {
-  // isLiked 값이 변경될 때마다 같은 작성자의 리뷰 목록을 가져옵니다.
-  if (isLiked) {
-    getAuthorReviews();
-  }
-}, [isLiked]);
+// useEffect(() => {
+//   // isLiked 값이 변경될 때마다 같은 작성자의 리뷰 목록을 가져옵니다.
+//   if (isLiked) {
+//     getAuthorReviews();
+//   }
+// }, [isLiked]);
 
   // console.log(post_id)
 
@@ -67,7 +67,7 @@ useEffect(() => {
 
         const authorResponse = await axiosInstance.get(`/users/posts/by-author?user_id=${response.data.post.user_id}`);
       // API 응답에서 같은 작성자의 리뷰 목록을 추출하고 상태에 설정합니다.
-      setAuthorReviews(authorResponse.data.posts);
+      // setAuthorReviews(authorResponse.data.posts);
         // console.log(response.data.post)
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -108,7 +108,7 @@ const toggleLike = async () => {
           뒤로 가기
         </button>
         {/* 같은 작성자의 리뷰 목록을 표시 (isLiked가 true일 때만 표시) */}
-        {isLiked && authorReviews.length > 0 && (
+        {/* {isLiked && authorReviews.length > 0 && (
           <div className="author-reviews">
             <h3>{review.nickname}님이 작성한 다른 후기</h3>
             <ul>
@@ -121,7 +121,7 @@ const toggleLike = async () => {
               ))}
             </ul>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

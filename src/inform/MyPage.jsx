@@ -93,7 +93,7 @@ function MyPage() {
       const reservationDatetime = reservationResponse.data.seat_time;
       // Make a POST request to your Express route to generate the QR code
       const response = await axiosInstance.post('/users/generatedQRCode',
-        { text: seatName }
+        { text: seatName, reservation_datetime: reservationDatetime }
       );
 
       // The response should contain the QR code image data
@@ -177,42 +177,42 @@ function MyPage() {
         <div className="my-reservation">
           <div className="name-title">자리 예약 내역</div>
           <div className="reservation-box">
-            {seatData ? (
-              // 2. 예약 내역이 있는 경우
-              <div className="my-seat" onClick={() => handleSeatClick(seatData)}>
-                <div className="my-seat-text">
-                  <p>내 자리</p>
-                </div>
-                <div className="my-seat-num">
-                  <p>{seatData}</p>
-                </div>
-              </div>
-            ) : (
-              // 1. 예약 내역이 없는 경우
-              <p>예약된 내역이 없습니다.</p>
-            )}
-            <div className="reserv-line"></div>
+                          {seatData ? (
+                  // 2. 예약 내역이 있는 경우
+                  <div className="my-seat" onClick={() => handleSeatClick(seatData)}>
+                    <div className="my-seat-text">
+                      <p>내 자리</p>
+                    </div>
+                    <div className="my-seat-num">
+                      <p>{seatData}</p>
+                    </div>
+                  </div>
+                ) : (
+                  // 1. 예약 내역이 없는 경우
+                  <p>예약된 내역이 없습니다.</p>
+                )}
 
-            {/* 2-1. 예약 후 아직 좌석 사용을 안 했을 경우 */}
-            {/* <div className="seat-time">
-              <div className="seat-time-text">남은 시간</div>
-              <div className="seat-time-num">4:58</div>
-              <button className="reserv-non-btn">취소</button>
-            </div> */}
+                {seatData && (
+                  <div className="reserv-line"></div>
+                )}
 
-            {/* 2-2. 예약 후 좌석 사용 중 */}
-            <div className="seat-time">
-              <div className="using-seat">
-                <p>
-                  현재 자리를
-                  <br />
-                  이용중입니다.
-                </p>
-                <button className="reserv-back-btn" onClick={seatDelete}>반납하기</button>
-              </div>
-            </div>
-          </div>
-        </div>
+                {/* 2-2. 예약 후 좌석 사용 중 */}
+                <div className="seat-time">
+                  {seatData ? (
+                    <div className="using-seat">
+                      <p>
+                        현재 자리를
+                        <br />
+                        이용중입니다.
+                      </p>
+                      <button className="reserv-back-btn" onClick={seatDelete}>
+                        반납하기
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+                </div>
+                </div>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="QR Code Modal" className="qr-modal-container">
           <h4>예약한 좌석</h4>
           <h1>{selectedSeat}</h1>

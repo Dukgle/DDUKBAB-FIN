@@ -43,7 +43,7 @@ app.use('/api/users/posts', posts);
 app.use('/api/users/bookmarks', bookmark);
 app.use('/api/users/shopping', shopping);
 app.use('/api/users/order', order); // 많은 수량으로 인해 자동적으로 품절 처리 ? 가능하면 구현
-app.use('/api/users', point_charge);
+app.use('/api/user', point_charge);
 app.use('/api/users', qr)
 
 app.use('/api/salers', saler_menu)
