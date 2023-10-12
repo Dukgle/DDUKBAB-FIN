@@ -38,10 +38,73 @@
     padding-top: 20px;
 }
 
+.option-quantity-bottom-gap {
+    height: 100px;
+}
+
 .chart {
     display: inline-block;
 }
 
 #gap {
     height: 15px;
+}
+
+
+.quantityBox {
+    display: block;
+    border-top: 1px solid #43000A;
+    border-bottom: 1px solid #43000A;
+}
+
+.option-quantity{
+    display: block;
+    flex: 0;
+}
+
+.minus-button-div {
+    display: inline-block;
+}
+
+.plus-button-div {
+    display: inline-block;
+}
+
+
+.minus-button {
+    font-size: 30px; /* 버튼의 글꼴 크기를 조절합니다. */
+    width: 40px; /* 버튼의 너비를 조절합니다. */
+    height: 40px; /* 버튼의 높이를 조절합니다. */
+    display: inline-block;
+    padding: 5px;
+    margin-left: 100px;
+}
+
+.option-quantity-num {
+    display: inline-block;
+    font-size: 24px;
+    margin-left: 20px;
+}
+
+.plus-button {
+    font-size: 24px; /* 버튼의 글꼴 크기를 조절합니다. */
+    width: 40px; /* 버튼의 너비를 조절합니다. */
+    height: 40px; /* 버튼의 높이를 조절합니다. */
+    display: inline-block;
+    padding: 5px;
+    margin-left: 20px;
+}
+
+.option-cart-button {
+    position: fixed;
+    text-align: center;
+    background-color: #FCCB6F;
+    margin: 30px;
+    padding: 10px;
+    border-radius: 25px;
+    border: 2px solid #FCCB6F;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50px;
 }
