@@ -22,9 +22,7 @@ function Pasta() {
   ];
 
   const menusOut = [
-    { name: "고기리들기름파스타", price: "6,000" },
-    { name: "김치삼겹필라프", price: "7,500" },
-    { name: "대패삼겹크림파스타", price: "7,500" },
+    //
   ];
 
   return (
