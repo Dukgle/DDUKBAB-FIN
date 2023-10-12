@@ -74,10 +74,6 @@ function Header({ logoText }) {
                   </Link>
                 </div>
               </div>
-              <div className="qr">
-                {/* QR코드 */}
-                <Qr /> {/* 모달창 띄우는 컴포넌트 */}
-              </div>
               <div className="list" onBlur={handleBlurContainer}>
                 {/* 메뉴 드롭다운_onBlur 사용 */}
                 <button className="list-button" onClick={handleClickContainer}>
