@@ -29,10 +29,10 @@
 .option-cart-button-wrap {
   display: flex;
   justify-content: center;
-  width: calc(80vw - 20px);
 }
 
 .option-cart-button {
+  width: calc(80vw - 20px);
   margin-top: 20px;
   padding: 5px 10px;
   position: fixed;
@@ -74,7 +74,8 @@
 }
 
 @media (hover: hover) {
-  .option-cart-button-wrap {
+  .option-cart-button {
     width: calc(390px * 0.8 - 20px);
+    margin-left: 790px;
   }
 }
