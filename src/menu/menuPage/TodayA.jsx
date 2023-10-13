@@ -12,8 +12,8 @@ function TodayA() {
     const logoText = "오늘의 메뉴 A";
 
     const todatA = [
-        { day: "목요일", date: "09월 21일", menulist: ["제육덮밥", "미역줄기나물", "닭강정", "파김치", "쌀밥"], img_net: image_net},
-        { day: "금요일", date: "09월 22일" , menulist: ["소고기장터국밥", "사각어묵볶음", "숙주부추두부", "석박지", "흑미밥"], img_net: image_net2}
+        { day: "목요일", date: "10월 12일", menulist: ["생크림로제찜닭", "춘권*야채튀김", "양파오이무침", "배추김치", "흑미밥"], img_net: image_net},
+        { day: "금요일", date: "10월 13일" , menulist: ["통통새우볶음밥", "콩나물비빔라면", "미니돈까스", "깍두기", "유부장국"], img_net: image_net2}
     ]
 
     const settings = {
