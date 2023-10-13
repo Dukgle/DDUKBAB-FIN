@@ -169,3 +169,11 @@
 .custom-modal p {
   margin-top: 100px;
 }
+
+@media (hover: hover) {
+  .custom-modal {
+    width: calc(390px * 0.8);
+    max-width: calc(390px * 0.8);
+    max-height: calc(390px * 0.9);
+  }
+}
