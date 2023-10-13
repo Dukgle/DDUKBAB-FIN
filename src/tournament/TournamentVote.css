@@ -53,6 +53,13 @@
   padding: 0;
 }
 
+/*
+.votes-things-box-img {
+  width: 100px;
+  height: 80px;
+}
+*/
+
 @media (hover: hover) {
   .votes-thing-box {
     width: calc(390px * 0.4);

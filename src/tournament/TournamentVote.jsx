@@ -6,6 +6,8 @@ import "./TournamentVote.css";
 import vote from "../icon/Best-Menu.png";
 import vs from "../icon/vote-vs.png";
 import logo from "../icon/DDUKBAB.png";
+import alio from "../img/pasta/우삼겹알리올리오.jpg"
+import tomato from "../img/pasta/클래식토마토파스타.jpg"
 
 function TournamentVote() {
   const logoText = "BEST 메뉴";
@@ -28,7 +30,7 @@ function TournamentVote() {
           <div className="votes-things-list">
             <div className="votes-thing">
               <button className="votes-thing-box">
-                <img src={logo} alt="logo" />
+                <img src={alio} alt="alio" class="votes-things-box-img" />
               </button>
               <p>알리오올리오</p>
             </div>
@@ -39,7 +41,7 @@ function TournamentVote() {
 
             <div className="votes-thing">
               <button className="votes-thing-box">
-                <img src={logo} alt="logo" />
+                <img src={tomato} alt="tomato" class="votes-things-box-img" />
               </button>
               <p>토마토파스타</p>
             </div>
