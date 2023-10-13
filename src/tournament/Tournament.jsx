@@ -18,7 +18,7 @@ function Tournament() {
           {/* 순위 별 박스 */}
           <div className="tour-box-medal-list">
             <div className="tour-box-medal">
-              <p>마성라면</p>
+              <p>참치김밥</p>
               <div className="tour-box-2">
                 <p>2</p>
               </div>
@@ -32,7 +32,7 @@ function Tournament() {
             </div>
 
             <div className="tour-box-medal">
-              <p>마성라면</p>
+              <p>혼족세트</p>
               <div className="tour-box-3">
                 <p>3</p>
               </div>

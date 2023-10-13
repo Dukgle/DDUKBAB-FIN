@@ -74,7 +74,7 @@
 }
 
 @media (hover: hover) {
-  .option-cart-button {
+  .option-cart-button-wrap {
     width: calc(390px * 0.8 - 20px);
   }
 }
